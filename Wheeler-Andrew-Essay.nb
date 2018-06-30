@@ -1,0 +1,783 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     33770,        775]
+NotebookOptionsPosition[     18188,        449]
+NotebookOutlinePosition[     31612,        742]
+CellTagsIndexPosition[     31569,        739]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Making A Graph Of A Directory\[CloseCurlyQuote]s Contents", "Title",
+ CellChangeTimes->{{3.700774153171832*^9, 3.700774159196458*^9}, {
+   3.716902403353675*^9, 3.716902404538095*^9}, {3.739280793388238*^9, 
+   3.739280794450489*^9}, 3.739284972305467*^9, {3.7393176146055536`*^9, 
+   3.7393176178937674`*^9}},ExpressionUUID->"755e0098-9782-4df5-8299-\
+7f54266c54d6"],
+
+Cell["\<\
+The classic pedagogical computer science tree traversal problem, implemented \
+and visualized in Wolfram Language.\
+\>", "Abstract",
+ CellChangeTimes->{{3.700774172671139*^9, 3.700774220850109*^9}, {
+   3.700778895632181*^9, 3.700778896308676*^9}, {3.716902409622859*^9, 
+   3.7169024154226503`*^9}, 3.7354828213821573`*^9, {3.73548464781948*^9, 
+   3.735484648712131*^9}, {3.735587270504136*^9, 3.735587272381384*^9}, 
+   3.739284980304078*^9},ExpressionUUID->"db4efd27-b72d-4835-a486-\
+b18956bba0cb"],
+
+Cell["Andrew Wheeler, June 29,  2018", "AuthorInfo",
+ CellChangeTimes->{{3.7360942820567207`*^9, 3.736094285334813*^9}, {
+  3.736098860672957*^9, 3.7360988944763517`*^9}, {3.7360990983398457`*^9, 
+  3.736099107824772*^9}, {3.736099251923992*^9, 3.7360993016054573`*^9}, {
+  3.7368685297868023`*^9, 3.736868530751481*^9}, {3.736868726576907*^9, 
+  3.7368687285334053`*^9}, {3.7368690514137907`*^9, 3.736869059546919*^9}, {
+  3.736869099634509*^9, 3.73686915397053*^9}, {3.739284990303336*^9, 
+  3.739284999533662*^9}},ExpressionUUID->"59a63784-4e95-46b9-9a1d-\
+2c013f47161b"],
+
+Cell["", "Text",ExpressionUUID->"85271f44-5b04-421c-bf31-0395fab10c35"],
+
+Cell["\<\
+As a newcomer to Wolfram Language from programming languages like Python on \
+C++, I quickly had to come to terms with the unique style of Wolfram. In \
+order to be a truly WL tree traversal that could also visualize the graph of \
+the trees it traversed, it would need to take full advantage of the language\
+\[CloseCurlyQuote]s unique syntax and functionality.\
+\>", "Text",
+ CellChangeTimes->{{3.700774312865305*^9, 3.700774350341485*^9}, 
+   3.716902427754265*^9, 3.7354828504054613`*^9, {3.735483653472313*^9, 
+   3.735483683917967*^9}, {3.7354849519274273`*^9, 3.735484958639419*^9}, {
+   3.7355873998710403`*^9, 3.73558761257386*^9}, {3.736099062603284*^9, 
+   3.736099062938388*^9}, 3.738588402126446*^9, {3.738588473865753*^9, 
+   3.738588479696198*^9}, {3.738588515044569*^9, 3.738588515882841*^9}, {
+   3.7392720899131393`*^9, 3.73927209100483*^9}, 
+   3.73928501668589*^9},ExpressionUUID->"99ddfba3-f2e4-48aa-a886-\
+7472bbc581ac"],
+
+Cell[CellGroupData[{
+
+Cell["The Process", "Section",
+ CellChangeTimes->{
+  3.716825484342502*^9, {3.7354837120026693`*^9, 3.735483720370885*^9}, {
+   3.7354849131442633`*^9, 3.735484915566925*^9}, {3.735484977664678*^9, 
+   3.73548497936073*^9}, {3.735486235411076*^9, 3.735486260084824*^9}, {
+   3.735587708401764*^9, 3.735587719552019*^9}, {3.736094321292815*^9, 
+   3.736094380388455*^9}, {3.739285500183021*^9, 
+   3.739285538626238*^9}},ExpressionUUID->"35feb7e4-4e93-4e64-abc0-\
+7b0b86e8128f"],
+
+Cell["\<\
+This graph constructor follows a very standard recursive depth-first \
+technique using function definitions depending on type and number of \
+arguments. Each step adds associations to a complete list of associations, \
+which will be used as the list of edges when assembling the graph; likewise, \
+each step adds to a full list of element names (directories and files) to be \
+used as the list of vertices. \
+\>", "Text",
+ CellChangeTimes->{{3.7354837220663652`*^9, 3.735483751473709*^9}, {
+   3.735486262485011*^9, 3.735486288116446*^9}, {3.735486386471116*^9, 
+   3.735486438104398*^9}, {3.735486495412992*^9, 3.7354864964790583`*^9}, {
+   3.735587802145555*^9, 3.735587813514737*^9}, {3.7360943822773247`*^9, 
+   3.736094388427802*^9}, 3.736868570517212*^9, {3.7392860495805964`*^9, 
+   3.739286081847354*^9}, {3.7392862093951807`*^9, 3.739286246822112*^9}, {
+   3.7392863270755315`*^9, 3.7392863951465187`*^9}, {3.7392913337624135`*^9, 
+   3.7392913950652013`*^9}, {3.7392915670019197`*^9, 3.73929159408272*^9}, {
+   3.7392916577274933`*^9, 3.7392917137989054`*^9}, 
+   3.739291829767851*^9},ExpressionUUID->"dc3fa30d-000e-45b8-9f6e-\
+f2ffca697a75"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Getting To The Base Cases", "Section",
+ CellChangeTimes->{
+  3.716825484342502*^9, {3.735483919282419*^9, 3.735483930584803*^9}, {
+   3.735486467547221*^9, 3.7354864678234043`*^9}, {3.7355877724233932`*^9, 
+   3.73558779245604*^9}, {3.73609433900439*^9, 3.736094368339192*^9}, 
+   3.7360944021880836`*^9, {3.739291881256954*^9, 3.73929189892375*^9}, {
+   3.739317602236041*^9, 
+   3.73931760994003*^9}},ExpressionUUID->"69c2789e-757d-42de-8e7a-\
+aa67a7c35b9d"],
+
+Cell["\<\
+Another way to start an exposition, or to expand on the basics, is to provide \
+an example showing the application of the topic. The example might be \
+something you arrive at by the end of the exposition, repeating that \
+conclusion here is acceptable if it's reasonably self-contained. It might \
+also be an example a problem scenario and the exposition explains a solution.\
+\>", "Text",
+ CellChangeTimes->{{3.735483932944489*^9, 3.7354839472643557`*^9}, 
+   3.735486472511282*^9, {3.735587929314433*^9, 3.735588040172488*^9}, {
+   3.7360944038458967`*^9, 3.736094409443921*^9}, 
+   3.736868574101507*^9},ExpressionUUID->"0ed2d935-e8ff-4c05-9e95-\
+1dd6631482fc"],
+
+Cell["\<\
+directoryGraph will run through directories and behaves according to given \
+arguments, leading to the base case where s_String is a file:\
+\>", "CodeText",
+ CellChangeTimes->{{3.7354837283947477`*^9, 3.735483762505471*^9}, 
+   3.7354839554661007`*^9, {3.735588048797143*^9, 3.735588078242901*^9}, 
+   3.736092055787822*^9, {3.739317636515972*^9, 3.7393176420013037`*^9}, {
+   3.739318105143958*^9, 3.739318119640233*^9}, {3.7393181545778093`*^9, 
+   3.7393181743798323`*^9}, {3.7393187401261415`*^9, 3.739318774709671*^9}, 
+   3.7393874954792323`*^9},ExpressionUUID->"7a9ac988-03a4-4c18-9dca-\
+ea7cdc6e168b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"directoryGraph", "[", "a_Association", "]"}], " ", ":=", 
+  RowBox[{"Join", " ", "@@", " ", 
+   RowBox[{"KeyValueMap", "[", 
+    RowBox[{"makeGraph", ",", " ", "a"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"directoryGraph", "[", 
+   RowBox[{"s_String", ",", " ", "a_Association"}], "]"}], " ", ":=", " ", 
+  RowBox[{"Join", "[", 
+   RowBox[{
+    RowBox[{"Thread", "[", 
+     RowBox[{"s", " ", "\[Rule]", " ", 
+      RowBox[{"Keys", "[", "a", "]"}]}], "]"}], ",", " ", 
+    RowBox[{"makeGraph", "[", "a", "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"directoryGraph", "[", 
+   RowBox[{"s_String", ",", "Null"}], "]"}], ":=", 
+  RowBox[{"{", "}"}]}]}], "Input",
+ CellChangeTimes->{{3.7354839684812403`*^9, 3.735483992816681*^9}, {
+   3.735486827194744*^9, 3.735486831464959*^9}, {3.736868703273498*^9, 
+   3.7368687066462917`*^9}, {3.7392919146101627`*^9, 3.739291934610858*^9}, {
+   3.7392919818649645`*^9, 3.739291992680744*^9}, 3.7393174987732973`*^9, {
+   3.7393175317401485`*^9, 3.739317557894225*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"e3998e4d-7b72-4f12-ab60-8520725af581"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualization", "Section",
+ CellChangeTimes->{
+  3.716825484342502*^9, {3.7169024799646597`*^9, 3.716902483419626*^9}, {
+   3.716902529770506*^9, 3.7169025326018753`*^9}, {3.736094413190734*^9, 
+   3.7360944203553658`*^9}, {3.7393188316075773`*^9, 3.739318832079281*^9}, {
+   3.73931887893804*^9, 
+   3.739318881991827*^9}},ExpressionUUID->"363992ed-65d6-4a46-9388-\
+9c42d41918e4"],
+
+Cell["\<\
+Top level of the function makes a graph out of all the associations given \
+from the lower levels. The resulting graph can presented and formatted as \
+needed:\
+\>", "Text",
+ CellChangeTimes->{{3.7368686183251553`*^9, 3.736868627072585*^9}, {
+  3.7393836986909018`*^9, 3.7393837085565233`*^9}, {3.739383813860962*^9, 
+  3.7393838374070034`*^9}, {3.739384136349693*^9, 3.739384181983674*^9}, {
+  3.739387484853644*^9, 
+  3.7393874923795223`*^9}},ExpressionUUID->"72b00745-65c9-40a3-989b-\
+179e50d3deb4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"directoryGraph", "[", 
+    RowBox[{"s_String", "?", "DirectoryQ"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"LayeredGraphPlot", "[", 
+    RowBox[{"makeGraph", "[", 
+     RowBox[{"<|", 
+      RowBox[{
+       RowBox[{"FileNameTake", "@", "s"}], " ", "\[Rule]", " ", 
+       RowBox[{"FileSystemMap", "[", 
+        RowBox[{
+         RowBox[{"Null", "&"}], ",", "s", ",", "Infinity"}], "]"}]}], "|>"}], 
+     "]"}], "]"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7393831642678394`*^9, 3.739383232028662*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"c2bc93d2-50da-4c07-a37b-2893a19b38f8"],
+
+Cell["\<\
+Fair warning: running this on a directory with too many contents will run for \
+a loooooong time.\
+\>", "Text",
+ CellChangeTimes->{{3.7393834628914123`*^9, 
+  3.7393835055942354`*^9}},ExpressionUUID->"f61499bf-6931-4599-b6cd-\
+dcd47bd659bd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"directoryGraph", "[", 
+  RowBox[{"Directory", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7393832580800447`*^9, 3.7393832594922686`*^9}, {
+  3.739383508541362*^9, 3.7393835247459927`*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"1531899f-b369-4855-a924-567b6e74f20b"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsComplexBox[CompressedData["
+1:eJxTTMoPSmViYGCQBWIQjQYcIJTAAQj9wR5Cczig8kXQ+GpofA40/Qxo/A/7
+0eQZ0OTRaJi7YHyY+3ABdHNh+mGAA40vgMYXQeNLoPFl0PgKaHwlNL4KGl8N
+ja+BxtdC4+ug8fXQ+AZwPgA0pRvg
+    "], {
+     {RGBColor[0.5, 0., 0.], Arrowheads[{{0.01234045393858478, 0.8}}], 
+      ArrowBox[{1, 2}], ArrowBox[{1, 3}], ArrowBox[{1, 4}], ArrowBox[{1, 5}], 
+      ArrowBox[{1, 6}], ArrowBox[{1, 7}], ArrowBox[{1, 8}], ArrowBox[{1, 9}], 
+      ArrowBox[{1, 10}], ArrowBox[{1, 11}], ArrowBox[{2, 12}], 
+      ArrowBox[{3, 13}], ArrowBox[{3, 14}], ArrowBox[{3, 15}], 
+      ArrowBox[{3, 16}], ArrowBox[{3, 17}], ArrowBox[{4, 18}], 
+      ArrowBox[{4, 19}], ArrowBox[{5, 20}], ArrowBox[{5, 21}], 
+      ArrowBox[{5, 22}], ArrowBox[{5, 23}], ArrowBox[{5, 24}], 
+      ArrowBox[{5, 25}], ArrowBox[{5, 26}], ArrowBox[{5, 27}], 
+      ArrowBox[{5, 28}], ArrowBox[{5, 29}]}, 
+     {RGBColor[0, 0, 0.7], 
+      TagBox[
+       TooltipBox[PointBox[1],
+        "\"Wolfram Desktop\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Wolfram Desktop", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[2],
+        "\"Challenges\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Challenges", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[3],
+        "\"essay\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "essay", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[4],
+        "\"project\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "project", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[5],
+        "\"Talks\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Talks", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[6],
+        "\"test1\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "test1", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[7],
+        "\"benchmark.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "benchmark.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[8],
+        "\"first_runs.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "first_runs.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[9],
+        "\"ProductReviews.csv\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ProductReviews.csv", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[10],
+        "\"testting.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "testting.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[11],
+        "\"WolframMark Report laptop.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "WolframMark Report laptop.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[12],
+        "\"Challenges.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Challenges.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[13],
+        "\"ComputationalEssayTemplate.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ComputationalEssayTemplate.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[14],
+        "\"C-Tree.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "C-Tree.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[15],
+        "\"C-Tree_testing.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "C-Tree_testing.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[16],
+        "\"state_of_union.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "state_of_union.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[17],
+        "\"TREEversal.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "TREEversal.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[18],
+        "\"ProjectList2018-STUDENTs.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ProjectList2018-STUDENTs.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[19],
+        "\"usefulFunctions.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "usefulFunctions.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[20],
+        "\"built-inKnowledge.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "built-inKnowledge.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[21],
+        "\"GraphicsAndVis.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "GraphicsAndVis.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[22],
+        "\"graphics.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "graphics.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[23],
+        "\"GraphsandNetworks.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "GraphsandNetworks.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[24],
+        "\"Interactivity.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Interactivity.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[25],
+        "\"ML-1.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ML-1.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[26],
+        "\"ProbStats.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ProbStats.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[27],
+        "\"programmers3.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "programmers3.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[28],
+        "\"StructuredData.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "StructuredData.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[29],
+        "\"WLT1.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "WLT1.nb", "Tooltip"]& ]}}],
+   Annotation[#, VertexCoordinateRules -> CompressedData["
+1:eJxTTMoPSmViYGCQBWIQjQYcIJTAAQj9wR5Cczig8kXQ+GpofA40/Qxo/A/7
+0eQZ0OTRaJi7YHyY+3ABdHNh+mGAA40vgMYXQeNLoPFl0PgKaHwlNL4KGl8N
+ja+BxtdC4+ug8fXQ+AZwPgA0pRvg
+     "]]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{655., Automatic},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{{3.7393835161280355`*^9, 3.7393835255428925`*^9}},
+ CellLabel->"Out[23]=",ExpressionUUID->"d5b9e230-ff98-4873-8cc8-33e82c2fa5af"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Further explorations", "Section",
+ CellChangeTimes->{{3.70077612322993*^9, 3.7007761320921593`*^9}, {
+  3.7007787731699142`*^9, 3.70077877480995*^9}, {3.735655649442748*^9, 
+  3.735655649665411*^9}},ExpressionUUID->"9da19663-7179-45c9-8160-\
+ad35832309c2"],
+
+Cell["\<\
+A couple possible extensions to this representation would be to be able to \
+move around the graph to see directories and their contents more clearly. The \
+program could also be altered to only traverse to certain depths. \
+\>", "Text",
+ CellChangeTimes->{{3.7007765492418337`*^9, 3.7007765636102467`*^9}, {
+   3.705104213701561*^9, 3.7051042224510612`*^9}, {3.7051697227932177`*^9, 
+   3.7051697367862177`*^9}, {3.7056847753333597`*^9, 3.7056847788413363`*^9}, 
+   3.705685608918363*^9, 3.716902605618763*^9, {3.7393563977329454`*^9, 
+   3.7393564136623554`*^9}, {3.7393565713497295`*^9, 3.739356627299161*^9}, {
+   3.7393568645976458`*^9, 3.7393568759642935`*^9}, {3.7393569338086224`*^9, 
+   3.7393569441080837`*^9}, {3.7393828957388377`*^9, 
+   3.739382921085101*^9}},ExpressionUUID->"45c45f6e-321c-4ce7-9657-\
+950c1134d308"],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.7007765492418337`*^9, 3.7007765636102467`*^9}, {
+   3.705104213701561*^9, 3.7051042224510612`*^9}, {3.705105582902875*^9, 
+   3.7051055862950687`*^9}, 3.705685620863511*^9, 3.7169026105308657`*^9, 
+   3.735483436579891*^9, 
+   3.739387335048192*^9},ExpressionUUID->"974d1d02-3f81-4f9f-a141-\
+4f1608fd9d6a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Author contact information", "Section",
+ CellChangeTimes->{{3.736868777412567*^9, 
+  3.736868791070746*^9}},ExpressionUUID->"a78f6e4f-dbdf-4763-a44f-\
+16569b36e665"],
+
+Cell["axwheele@hamilton.edu", "Text",
+ CellChangeTimes->{{3.736868810717331*^9, 3.736868830235566*^9}, {
+  3.7392721872667074`*^9, 
+  3.7392721954822454`*^9}},ExpressionUUID->"44146aed-2d19-4c66-bfba-\
+1e67f1c1dfb3"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{766, 772},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 7, 2018)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Title"], PageWidth -> WindowWidth, ShowCellBracket -> False, 
+    CellMargins -> {{0, 0}, {0, 0}}, 
+    CellBracketOptions -> {"OverlapContent" -> True}, 
+    CellElementSpacings -> {"ClosedGroupTopMargin" -> 150}, 
+    CellGroupingRules -> {"TitleGrouping", 0}, PageBreakAbove -> True, 
+    CellFrameMargins -> {{20, 50}, {6, 78}}, TextAlignment -> Left, 
+    LineSpacing -> {1, 4}, LanguageCategory -> "NaturalLanguage", 
+    CounterIncrements -> {"Title"}, 
+    CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+      "Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {"Subitem", 0}, {
+      "Subsubitem", 0}, {"ItemNumbered", 0}, {"SubitemNumbered", 0}, {
+      "SubsubitemNumbered", 0}}, MenuSortingValue -> 1100, MenuCommandKey -> 
+    "1", FontFamily -> "Source Sans Pro", FontSize -> 44, 
+    FontTracking -> -0.8, FontColor -> RGBColor[255, 255, 255], Background -> 
+    RGBColor[0.71375, 0.20785, 0.17255]], 
+   Cell[
+    StyleData["Abstract"], PageWidth -> WindowWidth, ShowCellBracket -> False,
+     ShowSelection -> True, CellMargins -> {{0, 0}, {0, 0}}, 
+    CellBracketOptions -> {"OverlapContent" -> True}, 
+    CellFrameMargins -> {{30, 40}, {24, 2}}, TextAlignment -> Left, 
+    FontFamily -> "Source Sans Pro", FontSize -> 16, FontSlant -> "Italic", 
+    FontColor -> RGBColor[255, 255, 255], Background -> 
+    RGBColor[0.71375, 0.20785, 0.17255]], 
+   Cell[
+    StyleData["AuthorInfo"], PageWidth -> WindowWidth, 
+    CellFrame -> {{0, 0}, {8, 0}}, ShowCellBracket -> True, ShowSelection -> 
+    True, CellMargins -> {{0, 0}, {0, 0}}, 
+    CellBracketOptions -> {"OverlapContent" -> True}, 
+    CellFrameMargins -> {{30, 40}, {10, 4}}, CellFrameColor -> 
+    RGBColor[0.988235, 0.403922, 0.0313725], TextAlignment -> Left, 
+    FontFamily -> "Source Sans Pro", FontSize -> 17, FontWeight -> "SemiBold",
+     FontSlant -> "Plain", FontColor -> RGBColor[255, 255, 255], Background -> 
+    RGBColor[0.71375, 0.20785, 0.17255]], 
+   Cell[
+    CellGroupData[{
+      Cell[
+       StyleData["Chapter"], ShowCellBracket -> False, 
+       CellMargins -> {{20, 30}, {10, 45}}, 
+       StyleKeyMapping -> {
+        "Tab" -> "Subchapter", "Backspace" -> 
+         "Title", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {$CellContext`Shift}] -> "Title"}, 
+       CellGroupingRules -> {"SectionGrouping", 10}, PageBreakBelow -> False, 
+       LineSpacing -> {1, 4}, LanguageCategory -> "NaturalLanguage", 
+       CounterIncrements -> "Chapter", 
+       CounterAssignments -> {{"Subchapter", 0}, {"Section", 0}, {
+         "Equation", 0}, {"Figure", 0}, {"Subsubtitle", 0}, {"Item", 0}, {
+         "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+         "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}}, MenuSortingValue -> 
+       1150, MenuCommandKey -> "2", FontFamily -> "Source Sans Pro", FontSize -> 
+       34, FontTracking -> -0.5, FontColor -> 
+       RGBColor[
+        0.21176470588235294`, 0.21176470588235294`, 0.21176470588235294`]], 
+      Cell[
+       StyleData["Chapter", "Presentation"], 
+       CellMargins -> {{67, Inherited}, {10, 15}}, LineSpacing -> {1, 16}, 
+       FontSize -> 48], 
+      Cell[
+       StyleData["Chapter", "SlideShow"], 
+       CellMargins -> {{
+         0.135 FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}], 0.04 
+          FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}]}, {10, 15}}, 
+       LineSpacing -> {1, 2}, FontSize -> 48], 
+      Cell[
+       StyleData["Chapter", "Condensed"], CellMargins -> {{18, 10}, {5, 7}}, 
+       FontSize -> 14], 
+      Cell[
+       StyleData["Chapter", "Printout"], 
+       CellMargins -> {{10, Inherited}, {10, 15}}], 
+      Cell[
+       StyleData["Chapter", "PrintoutGray"], 
+       CellMargins -> {{10, Inherited}, {10, 15}}]}, Open]], 
+   Cell[
+    CellGroupData[{
+      Cell[
+       StyleData["Section"], CellFrame -> False, ShowCellBracket -> True, 
+       CellMargins -> {{20, 30}, {10, 25}}, Evaluatable -> False, 
+       CellGroupingRules -> {"SectionGrouping", 40}, PageBreakBelow -> False, 
+       CellChangeTimes -> {3.716825484342502*^9}, Hyphenation -> False, 
+       CounterIncrements -> "Section", 
+       CounterAssignments -> {{"Subsection", 0}, {"Subsubsection", 0}, {
+         "ItemNumbered", 0}}, AspectRatioFixed -> True, FontFamily -> 
+       "Source Sans Pro", FontSize -> 28, FontTracking -> -0.5, FontColor -> 
+       RGBColor[0.71375, 0.20785, 0.17255]], 
+      Cell[
+       StyleData["Section", "Presentation", StyleDefinitions -> None]], 
+      Cell[
+       StyleData["Section", "SlideShow", StyleDefinitions -> None]], 
+      Cell[
+       StyleData["Section", "Printout", StyleDefinitions -> None]]}, Open]], 
+   Cell[
+    CellGroupData[{
+      Cell[
+       StyleData["Subsection"], ShowCellBracket -> False, 
+       CellMargins -> {{20, 30}, {6, 12}}, 
+       CellGroupingRules -> {"SectionGrouping", 50}, PageBreakBelow -> False, 
+       Hyphenation -> False, LineSpacing -> {1, 1}, CounterIncrements -> 
+       "Subsection", 
+       CounterAssignments -> {{"Subsubsection", 0}, {"ItemNumbered", 0}}, 
+       FontFamily -> "Source Sans Pro", FontSize -> 23, FontTracking -> -0.5, 
+       FontColor -> RGBColor[0.71375, 0.20785, 0.17255]], 
+      Cell[
+       StyleData["Subsection", "Presentation", StyleDefinitions -> None]], 
+      Cell[
+       StyleData["Subsection", "SlideShow", StyleDefinitions -> None]], 
+      Cell[
+       StyleData["Subsection", "Printout", StyleDefinitions -> None]]}, 
+     Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell[
+       StyleData["Subsubsection"], ShowCellBracket -> False, 
+       CellMargins -> {{21, 21}, {2, 8}}, 
+       CellGroupingRules -> {"SectionGrouping", 60}, PageBreakBelow -> False, 
+       Hyphenation -> False, LineSpacing -> {1, 1}, CounterIncrements -> 
+       "Subsubsection", CounterAssignments -> {{"ItemNumbered", 0}}, 
+       FontFamily -> "Source Sans Pro", FontSize -> 18, FontTracking -> -0.5, 
+       FontColor -> RGBColor[0.9254901960784314, 0.49019607843137253`, 0.2]], 
+      Cell[
+       StyleData["Subsubsection", "Presentation", StyleDefinitions -> None]], 
+      Cell[
+       StyleData["Subsubsection", "SlideShow", StyleDefinitions -> None]], 
+      Cell[
+       StyleData["Subsubsection", "Printout", StyleDefinitions -> None]]}, 
+     Closed]], 
+   Cell[
+    StyleData["FurtherExplorationSection"], CellFrame -> {{0, 0}, {0, 0.5}}, 
+    ShowCellBracket -> False, CellMargins -> {{20, 30}, {4, 24}}, 
+    CellGroupingRules -> {"SectionGrouping", 30}, 
+    CellFrameMargins -> {{0, 0}, {0, 22}}, CellFrameColor -> GrayLevel[0.8], 
+    DefaultNewCellStyle -> "FurtherExploration", FontFamily -> 
+    "Source Sans Pro", FontSize -> 18, 
+    FontVariations -> {"CapsType" -> "AllCaps"}, FontColor -> 
+    RGBColor[0.2784313725490196, 0.2784313725490196, 0.2784313725490196]], 
+   Cell[
+    StyleData["FurtherExploration", StyleDefinitions -> StyleData["Text"]], 
+    ShowCellBracket -> False, CellMargins -> {{20, 10}, {2, 4}}, 
+    ReturnCreatesNewCell -> True, FontFamily -> "Source Sans Pro", FontSize -> 
+    16, FontColor -> RGBColor[0.71375, 0.20785, 0.17255]], 
+   Cell[
+    StyleData["AuthorshipSection"], ShowCellBracket -> False, 
+    CellMargins -> {{20, Inherited}, {4, 22}}, 
+    CellGroupingRules -> {"SectionGrouping", 30}, DefaultNewCellStyle -> 
+    "FurtherExploration", FontFamily -> "Source Sans Pro", FontSize -> 18, 
+    FontVariations -> {"CapsType" -> "AllCaps"}, FontColor -> 
+    RGBColor[0.2784313725490196, 0.2784313725490196, 0.2784313725490196]], 
+   Cell[
+    StyleData["Authorship", StyleDefinitions -> StyleData["Text"]], 
+    ShowCellBracket -> False, CellMargins -> {{20, 10}, {2, 4}}, 
+    ReturnCreatesNewCell -> True, FontFamily -> "Source Sans Pro", FontSize -> 
+    16, FontColor -> 
+    RGBColor[0.4392156862745098, 0.4392156862745098, 0.4392156862745098]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Body Text", "Section"], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["Text"], ShowCellBracket -> True, 
+          CellMargins -> {{20, 10}, {6, 8}}, ReturnCreatesNewCell -> True, 
+          DefaultNewCellStyle -> "Direction", FontSize -> 
+          15, $CellContext`DefaultReturnCreatedCellStyle -> "Direction"], 
+         Cell[
+          StyleData["Text", "Presentation", StyleDefinitions -> None]], 
+         Cell[
+          StyleData["Text", "SlideShow", StyleDefinitions -> None]], 
+         Cell[
+          StyleData["Text", "Printout", StyleDefinitions -> None], 
+          TextJustification -> 1.]}, Open]], 
+      Cell[
+       StyleData["CodeText", StyleDefinitions -> StyleData["Text"]], 
+       CellMargins -> {{23, 10}, {3, 8}}, CellFrameLabelMargins -> 4, 
+       MenuSortingValue -> 10000, MenuCommandKey -> "8", FontSize -> 15, 
+       FontWeight -> "Plain", FontColor -> 
+       GrayLevel[0.45], $CellContext`DefaultReturnCreatedCellStyle -> 
+       "Input"]}, Open]], 
+   Cell[
+    CellGroupData[{
+      Cell[
+      "Styles for Input, Output and Graphics", "Section", 
+       CellChangeTimes -> {3.7168930720372066`*^9}], 
+      Cell[
+       StyleData["Input"], CellMargins -> {{82, 10}, {5, 6}}, 
+       StyleKeyMapping -> {"=" -> "WolframAlphaShort", "*" -> "Item"}, 
+       AutoNumberFormatting -> False, FontSize -> 13], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["InputOnly"], CellMargins -> {{82, 10}, {7, 7}}, FontSize -> 
+          13], 
+         Cell[
+          StyleData["InputOnly", "Presentation"], 
+          CellMargins -> {{100, 10}, {8, 15}}], 
+         Cell[
+          StyleData["InputOnly", "SlideShow"], 
+          CellMargins -> {{100, 10}, {8, 15}}], 
+         Cell[
+          StyleData["InputOnly", "Condensed"], 
+          CellMargins -> {{50, 10}, {2, 3}}], 
+         Cell[
+          StyleData["InputOnly", "Printout"], 
+          CellMargins -> {{49, Inherited}, {Inherited, Inherited}}, 
+          LinebreakAdjustments -> {0.85, 2, 10, 1, 1}], 
+         Cell[
+          StyleData["InputOnly", "PrintoutGray"], 
+          CellMargins -> {{49, Inherited}, {Inherited, Inherited}}, 
+          LinebreakAdjustments -> {0.85, 2, 10, 1, 1}]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["Code"]], 
+         Cell[
+          StyleData["Code", "Presentation"], 
+          CellMargins -> {{100, 10}, {8, 15}}], 
+         Cell[
+          StyleData["Code", "SlideShow"], 
+          CellMargins -> {{
+            0.135 FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}], 0.01 
+             FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}]}, {8, 15}}, 
+          LinebreakAdjustments -> {1, 2., 12., 1., 1.}, FontSize -> 20], 
+         Cell[
+          StyleData["Code", "Condensed"], CellMargins -> {{50, 10}, {2, 3}}], 
+         Cell[
+          StyleData["Code", "Printout"], 
+          CellMargins -> {{49, Inherited}, {Inherited, Inherited}}], 
+         Cell[
+          StyleData["Code", "PrintoutGray"], 
+          CellMargins -> {{49, Inherited}, {Inherited, Inherited}}]}, 
+        Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["Output"], CellMargins -> {{82, 10}, {10, 5}}, FontSize -> 
+          13], 
+         Cell[
+          StyleData["Output", "Presentation"], 
+          CellMargins -> {{100, 10}, {15, 8}}], 
+         Cell[
+          StyleData["Output", "SlideShow"], 
+          CellMargins -> {{
+            0.135 FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}], 0.01 
+             FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}]}, {15, 8}}, 
+          LinebreakAdjustments -> {1, 2., 12., 1., 1.}, FontSize -> 20], 
+         Cell[
+          StyleData["Output", "Condensed"], 
+          CellMargins -> {{50, Inherited}, {3, 2}}], 
+         Cell[
+          StyleData["Output", "Printout"], 
+          CellMargins -> {{49, Inherited}, {9, 3}}], 
+         Cell[
+          StyleData["Output", "PrintoutGray"], 
+          CellMargins -> {{49, Inherited}, {9, 3}}]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["PlacedGraphics"], CellFrame -> False, ShowCellBracket -> 
+          False, CellMargins -> {{82, 21}, {8, 10}}, CellGroupingRules -> 
+          "GraphicsGrouping", CellHorizontalScrolling -> True, ShowCellLabel -> 
+          False, TextAlignment -> Left, LineSpacing -> {1, 1}, 
+          InsetBoxOptions -> {
+           BaseStyle -> {CellFrame -> None, Background -> None}}], 
+         Cell[
+          StyleData[
+          "PlacedGraphics", "Presentation", StyleDefinitions -> None]], 
+         Cell[
+          StyleData["PlacedGraphics", "SlideShow", StyleDefinitions -> None]], 
+         Cell[
+          StyleData["PlacedGraphics", "Printout", StyleDefinitions -> None]]},
+         Closed]], 
+      Cell[
+       StyleData["CellLabel"], LineSpacing -> {1, 1}, AutoNumberFormatting -> 
+       False, FontSize -> 9, FontSlant -> "Oblique"]}, Open]]}, Visible -> 
+  False, FrontEndVersion -> 
+  "11.3 for Microsoft Windows (64-bit) (March 7, 2018)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 373, 5, 198, "Title",ExpressionUUID->"755e0098-9782-4df5-8299-7f54266c54d6"],
+Cell[956, 29, 512, 9, 67, "Abstract",ExpressionUUID->"db4efd27-b72d-4835-a486-b18956bba0cb"],
+Cell[1471, 40, 574, 8, 44, "AuthorInfo",ExpressionUUID->"59a63784-4e95-46b9-9a1d-2c013f47161b"],
+Cell[2048, 50, 71, 0, 33, "Text",ExpressionUUID->"85271f44-5b04-421c-bf31-0395fab10c35"],
+Cell[2122, 52, 952, 15, 77, "Text",ExpressionUUID->"99ddfba3-f2e4-48aa-a886-7472bbc581ac"],
+Cell[CellGroupData[{
+Cell[3099, 71, 477, 8, 71, "Section",ExpressionUUID->"35feb7e4-4e93-4e64-abc0-7b0b86e8128f"],
+Cell[3579, 81, 1163, 18, 99, "Text",ExpressionUUID->"dc3fa30d-000e-45b8-9f6e-f2ffca697a75"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4779, 104, 466, 8, 71, "Section",ExpressionUUID->"69c2789e-757d-42de-8e7a-aa67a7c35b9d"],
+Cell[5248, 114, 675, 11, 99, "Text",ExpressionUUID->"0ed2d935-e8ff-4c05-9e95-1dd6631482fc"],
+Cell[5926, 127, 619, 10, 52, "CodeText",ExpressionUUID->"7a9ac988-03a4-4c18-9dca-ea7cdc6e168b"],
+Cell[6548, 139, 1153, 24, 65, "Input",ExpressionUUID->"e3998e4d-7b72-4f12-ab60-8520725af581"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7738, 168, 387, 7, 71, "Section",ExpressionUUID->"363992ed-65d6-4a46-9388-9c42d41918e4"],
+Cell[8128, 177, 512, 10, 55, "Text",ExpressionUUID->"72b00745-65c9-40a3-989b-179e50d3deb4"],
+Cell[8643, 189, 660, 16, 65, "Input",ExpressionUUID->"c2bc93d2-50da-4c07-a37b-2893a19b38f8"],
+Cell[9306, 207, 251, 6, 33, "Text",ExpressionUUID->"f61499bf-6931-4599-b6cd-dcd47bd659bd"],
+Cell[CellGroupData[{
+Cell[9582, 217, 298, 5, 26, "Input",ExpressionUUID->"1531899f-b369-4855-a924-567b6e74f20b"],
+Cell[9883, 224, 6348, 174, 81, "Output",ExpressionUUID->"d5b9e230-ff98-4873-8cc8-33e82c2fa5af"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16280, 404, 262, 4, 71, "Section",ExpressionUUID->"9da19663-7179-45c9-8160-ad35832309c2"],
+Cell[16545, 410, 840, 13, 77, "Text",ExpressionUUID->"45c45f6e-321c-4ce7-9657-950c1134d308"],
+Cell[17388, 425, 345, 6, 33, "Text",ExpressionUUID->"974d1d02-3f81-4f9f-a141-4f1608fd9d6a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17770, 436, 171, 3, 71, "Section",ExpressionUUID->"a78f6e4f-dbdf-4763-a44f-16569b36e665"],
+Cell[17944, 441, 216, 4, 33, "Text",ExpressionUUID->"44146aed-2d19-4c66-bfba-1e67f1c1dfb3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     33770,        775]
-NotebookOptionsPosition[     18188,        449]
-NotebookOutlinePosition[     31612,        742]
-CellTagsIndexPosition[     31569,        739]
+NotebookDataLength[    111337,       2489]
+NotebookOptionsPosition[     95389,       2161]
+NotebookOutlinePosition[    108813,       2454]
+CellTagsIndexPosition[    108770,       2451]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -161,7 +161,7 @@ Cell[BoxData[{
    3.7368687066462917`*^9}, {3.7392919146101627`*^9, 3.739291934610858*^9}, {
    3.7392919818649645`*^9, 3.739291992680744*^9}, 3.7393174987732973`*^9, {
    3.7393175317401485`*^9, 3.739317557894225*^9}},
- CellLabel->"In[16]:=",ExpressionUUID->"e3998e4d-7b72-4f12-ab60-8520725af581"]
+ CellLabel->"In[41]:=",ExpressionUUID->"e3998e4d-7b72-4f12-ab60-8520725af581"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,7 +203,7 @@ Cell[BoxData[
          RowBox[{"Null", "&"}], ",", "s", ",", "Infinity"}], "]"}]}], "|>"}], 
      "]"}], "]"}]}], "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->{{3.7393831642678394`*^9, 3.739383232028662*^9}},
- CellLabel->"In[22]:=",ExpressionUUID->"c2bc93d2-50da-4c07-a37b-2893a19b38f8"],
+ CellLabel->"In[44]:=",ExpressionUUID->"c2bc93d2-50da-4c07-a37b-2893a19b38f8"],
 
 Cell["\<\
 Fair warning: running this on a directory with too many contents will run for \
@@ -213,32 +213,70 @@ a loooooong time.\
   3.7393835055942354`*^9}},ExpressionUUID->"f61499bf-6931-4599-b6cd-\
 dcd47bd659bd"],
 
-Cell[CellGroupData[{
+Cell["\<\
+  The following code returns an output for whatever directory you are \
+currently in, which for me usually is under Documents\\\\WolframDesktop. \
+Check with:\
+\>", "CodeText",
+ CellChangeTimes->{{3.7397257869854965`*^9, 3.7397257962433395`*^9}, {
+  3.739725845894159*^9, 3.7397258467631197`*^9}, {3.739725937384426*^9, 
+  3.739725977973446*^9}, {3.7397263226698956`*^9, 3.739726365483953*^9}, {
+  3.739726431435991*^9, 
+  3.7397264351353617`*^9}},ExpressionUUID->"2302b96b-3ba4-42be-bc27-\
+77d92e4b8688"],
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.73972636765909*^9, 3.739726386156538*^9}, {
+  3.73972641656584*^9, 
+  3.7397264180144005`*^9}},ExpressionUUID->"abc184f1-78f3-41d8-9d14-\
+cf7f437eb774"],
+
+Cell[TextData[{
+ "  And move to the desired directory with SetDirectory[",
+ StyleBox["path",
+  FontSlant->"Italic"],
+ "]. Evaluating SetDirectory[] with no argument will set the current working \
+directory to your \[OpenCurlyDoubleQuote]home\[CloseCurlyDoubleQuote] \
+directory. When I evaluate directoryGraph[] on my given directory, I end up \
+with this layered graph:"
+}], "CodeText",
+ CellChangeTimes->{{3.7397264389323225`*^9, 3.739726527724944*^9}, {
+  3.7397267473773794`*^9, 3.739726786106818*^9}, {3.739734505674209*^9, 
+  3.7397345282937317`*^9}, {3.739734958627612*^9, 3.739734960579382*^9}, {
+  3.739739847303975*^9, 
+  3.739739895481133*^9}},ExpressionUUID->"e6091232-ce64-4b5a-9fde-\
+f66ef5817732"],
 
 Cell[BoxData[
  RowBox[{"directoryGraph", "[", 
   RowBox[{"Directory", "[", "]"}], "]"}]], "Input",
  CellChangeTimes->{{3.7393832580800447`*^9, 3.7393832594922686`*^9}, {
   3.739383508541362*^9, 3.7393835247459927`*^9}},
- CellLabel->"In[23]:=",ExpressionUUID->"1531899f-b369-4855-a924-567b6e74f20b"],
+ CellLabel->"In[45]:=",ExpressionUUID->"1531899f-b369-4855-a924-567b6e74f20b"],
 
-Cell[BoxData[
+Cell[TextData[Cell[BoxData[
  GraphicsBox[
   TagBox[GraphicsComplexBox[CompressedData["
-1:eJxTTMoPSmViYGCQBWIQjQYcIJTAAQj9wR5Cczig8kXQ+GpofA40/Qxo/A/7
-0eQZ0OTRaJi7YHyY+3ABdHNh+mGAA40vgMYXQeNLoPFl0PgKaHwlNL4KGl8N
-ja+BxtdC4+ug8fXQ+AZwPgA0pRvg
+1:eJxtzz0Kg0AQhuHBaksLixQWa5AQRcSo+S/cM3gEIXWOqEfyCDEsu+CrA8vH
+wzDLTDJ8+08gItny/okyNsLJ5tzZVGZtDbewwrzA84i+oI90ezm7/fzcuD1l
+719fZk0Fh3AEH+AY1vARTuETfIZzuIBLuIIvcA03cAtf4Rt8hx/wE37Bb+8f
+zxsixw==
     "], {
-     {RGBColor[0.5, 0., 0.], Arrowheads[{{0.01234045393858478, 0.8}}], 
+     {RGBColor[0.5, 0., 0.], Arrowheads[{{0.010585300268897521`, 0.8}}], 
       ArrowBox[{1, 2}], ArrowBox[{1, 3}], ArrowBox[{1, 4}], ArrowBox[{1, 5}], 
       ArrowBox[{1, 6}], ArrowBox[{1, 7}], ArrowBox[{1, 8}], ArrowBox[{1, 9}], 
       ArrowBox[{1, 10}], ArrowBox[{1, 11}], ArrowBox[{2, 12}], 
       ArrowBox[{3, 13}], ArrowBox[{3, 14}], ArrowBox[{3, 15}], 
-      ArrowBox[{3, 16}], ArrowBox[{3, 17}], ArrowBox[{4, 18}], 
-      ArrowBox[{4, 19}], ArrowBox[{5, 20}], ArrowBox[{5, 21}], 
-      ArrowBox[{5, 22}], ArrowBox[{5, 23}], ArrowBox[{5, 24}], 
-      ArrowBox[{5, 25}], ArrowBox[{5, 26}], ArrowBox[{5, 27}], 
-      ArrowBox[{5, 28}], ArrowBox[{5, 29}]}, 
+      ArrowBox[{3, 16}], ArrowBox[{3, 17}], ArrowBox[{3, 18}], 
+      ArrowBox[{4, 19}], ArrowBox[{4, 20}], ArrowBox[{4, 21}], 
+      ArrowBox[{4, 22}], ArrowBox[{4, 23}], ArrowBox[{4, 24}], 
+      ArrowBox[{4, 25}], ArrowBox[{4, 26}], ArrowBox[{5, 27}], 
+      ArrowBox[{5, 28}], ArrowBox[{5, 29}], ArrowBox[{5, 30}], 
+      ArrowBox[{5, 31}], ArrowBox[{5, 32}], ArrowBox[{5, 33}], 
+      ArrowBox[{5, 34}], ArrowBox[{5, 35}], ArrowBox[{5, 36}], 
+      ArrowBox[{5, 37}], ArrowBox[{5, 38}], ArrowBox[{5, 39}], 
+      ArrowBox[{5, 40}], ArrowBox[{5, 41}]}, 
      {RGBColor[0, 0, 0.7], 
       TagBox[
        TooltipBox[PointBox[1],
@@ -327,77 +365,140 @@ ja+BxtdC4+ug8fXQ+AZwPgA0pRvg
        Annotation[#, "TREEversal.nb", "Tooltip"]& ], 
       TagBox[
        TooltipBox[PointBox[18],
+        "\"Wheeler-Andrew-Essay.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Wheeler-Andrew-Essay.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[19],
+        "\"Activities.csv\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Activities.csv", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[20],
+        "\"Capture2.PNG\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Capture2.PNG", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[21],
+        "\"Capture.PNG\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Capture.PNG", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[22],
+        "\"Friends-Romans-Countrymen.txt\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Friends-Romans-Countrymen.txt", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[23],
         "\"ProjectList2018-STUDENTs.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "ProjectList2018-STUDENTs.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[19],
+       TooltipBox[PointBox[24],
+        "\"projectTesting.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "projectTesting.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[25],
         "\"usefulFunctions.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "usefulFunctions.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[20],
+       TooltipBox[PointBox[26],
+        "\"Wheeler-Andrew-Project.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Wheeler-Andrew-Project.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[27],
         "\"built-inKnowledge.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "built-inKnowledge.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[21],
+       TooltipBox[PointBox[28],
+        "\"ColorProcessing.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ColorProcessing.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[29],
         "\"GraphicsAndVis.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "GraphicsAndVis.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[22],
+       TooltipBox[PointBox[30],
         "\"graphics.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "graphics.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[23],
+       TooltipBox[PointBox[31],
         "\"GraphsandNetworks.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "GraphsandNetworks.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[24],
+       TooltipBox[PointBox[32],
         "\"Interactivity.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "Interactivity.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[25],
+       TooltipBox[PointBox[33],
+        "\"mailWork.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "mailWork.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[34],
         "\"ML-1.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "ML-1.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[26],
+       TooltipBox[PointBox[35],
+        "\"need4speed.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "need4speed.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[36],
         "\"ProbStats.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "ProbStats.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[27],
+       TooltipBox[PointBox[37],
         "\"programmers3.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "programmers3.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[28],
+       TooltipBox[PointBox[38],
+        "\"recursionAndNesting.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "recursionAndNesting.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[39],
+        "\"recursionAndNestingNoteBook.nb\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "recursionAndNestingNoteBook.nb", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[40],
         "\"StructuredData.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "StructuredData.nb", "Tooltip"]& ], 
       TagBox[
-       TooltipBox[PointBox[29],
+       TooltipBox[PointBox[41],
         "\"WLT1.nb\"",
         TooltipStyle->"TextStyling"],
        Annotation[#, "WLT1.nb", "Tooltip"]& ]}}],
    Annotation[#, VertexCoordinateRules -> CompressedData["
-1:eJxTTMoPSmViYGCQBWIQjQYcIJTAAQj9wR5Cczig8kXQ+GpofA40/Qxo/A/7
-0eQZ0OTRaJi7YHyY+3ABdHNh+mGAA40vgMYXQeNLoPFl0PgKaHwlNL4KGl8N
-ja+BxtdC4+ug8fXQ+AZwPgA0pRvg
+1:eJxtzz0Kg0AQhuHBaksLixQWa5AQRcSo+S/cM3gEIXWOqEfyCDEsu+CrA8vH
+wzDLTDJ8+08gItny/okyNsLJ5tzZVGZtDbewwrzA84i+oI90ezm7/fzcuD1l
+719fZk0Fh3AEH+AY1vARTuETfIZzuIBLuIIvcA03cAtf4Rt8hx/wE37Bb+8f
+zxsixw==
      "]]& ],
   AspectRatio->Automatic,
   FrameTicks->None,
-  ImageSize->{655., Automatic},
+  ImageSize->{Automatic, 46.935483870967744`},
   PlotRange->All,
-  PlotRangePadding->Scaled[0.1]]], "Output",
- CellChangeTimes->{{3.7393835161280355`*^9, 3.7393835255428925`*^9}},
- CellLabel->"Out[23]=",ExpressionUUID->"d5b9e230-ff98-4873-8cc8-33e82c2fa5af"]
-}, Open  ]]
+  PlotRangePadding->Scaled[
+   0.1]]],ExpressionUUID->"70cfca98-258d-4b3f-bf24-4effc35db817"]], "Text",
+ CellChangeTimes->{{3.739734929140444*^9, 3.7397349442231307`*^9}, {
+  3.73973944671653*^9, 
+  3.7397394478425517`*^9}},ExpressionUUID->"f425d71c-3315-4cde-b543-\
+d00810881dd8"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -410,8 +511,13 @@ ad35832309c2"],
 
 Cell["\<\
 A couple possible extensions to this representation would be to be able to \
-move around the graph to see directories and their contents more clearly. The \
+move around the graph to see directories and their contents more clearly; the \
 program could also be altered to only traverse to certain depths. \
+Additionally, different graphing methods may be used, such as Graph instead \
+of LayeredGraphPlot and the use of Style, but some default functionality of \
+LayeredGraphPlot would be missed. Here are two representations of a larger \
+directory tree, the first using Graph[] and the second using \
+LayeredGraphPlot[]:\
 \>", "Text",
  CellChangeTimes->{{3.7007765492418337`*^9, 3.7007765636102467`*^9}, {
    3.705104213701561*^9, 3.7051042224510612`*^9}, {3.7051697227932177`*^9, 
@@ -419,17 +525,1623 @@ program could also be altered to only traverse to certain depths. \
    3.705685608918363*^9, 3.716902605618763*^9, {3.7393563977329454`*^9, 
    3.7393564136623554`*^9}, {3.7393565713497295`*^9, 3.739356627299161*^9}, {
    3.7393568645976458`*^9, 3.7393568759642935`*^9}, {3.7393569338086224`*^9, 
-   3.7393569441080837`*^9}, {3.7393828957388377`*^9, 
-   3.739382921085101*^9}},ExpressionUUID->"45c45f6e-321c-4ce7-9657-\
+   3.7393569441080837`*^9}, {3.7393828957388377`*^9, 3.739382921085101*^9}, {
+   3.7397383542408943`*^9, 3.7397383749026585`*^9}, {3.73973909944452*^9, 
+   3.7397392316767955`*^9}},ExpressionUUID->"45c45f6e-321c-4ce7-9657-\
 950c1134d308"],
 
-Cell["", "Text",
- CellChangeTimes->{{3.7007765492418337`*^9, 3.7007765636102467`*^9}, {
-   3.705104213701561*^9, 3.7051042224510612`*^9}, {3.705105582902875*^9, 
-   3.7051055862950687`*^9}, 3.705685620863511*^9, 3.7169026105308657`*^9, 
-   3.735483436579891*^9, 
-   3.739387335048192*^9},ExpressionUUID->"974d1d02-3f81-4f9f-a141-\
-4f1608fd9d6a"]
+Cell[BoxData[
+ GraphicsBox[GraphicsComplexBox[CompressedData["
+1:eJw9V3k0VW/Y5U6Ge93JPCXDnYokJEl3myWFMmVKRUURQpHK0ByJClEZoqK5
+qAxpIoloUpQipVKRKfFL+c631re+889ZZ73nnfaz936eR3v1pmXBJAkJiXBJ
+CYn/fcfVr5TLc1PDsXsPLJ2mOFjAeiB91UkeXXNE5LvJbAzrn1Je/mw6ypwH
+HRIec5CSpn4p7akK7D48Mdj/RwEFgrq4vMeqmFHl/KxxsxKWX/pxjBLORfjT
+9WsWXObiP7kEd+o6TZi+7ypr1pIBxTVzfXTZdOxPYgx0yMpD+4L3h2lnpFE6
+N0noPEMOrnPXbWpz6hePLJL1+tcli5AOz/DB9xx4HIo23HCVjsCc+f2OcW/E
+H6fsX255QYHEZfE4w+ujeFfihuSfVRQUcDO0uqxaxIyo+2sqrstA4v+eVxZT
+w7fYdBQkytx99aVenOpWm9oSyYTEXK+EA0vOiqenf1A8NMCARFXYrVP+e8V3
+i6LuNfvIwFWq5vObym/i2heD/RXXKZjed+CmO/uB+EPBsZbAh1IocBw57kbt
+FZ/y7nab5UpDYMjk75V5r8VHlffe/xfOwuzrJpLmja/E89LbVkaLpTG7x8Zl
+lXW7eJpbb1vYMhq6kxarCGK/i4MkTjrZOEnDcf3DYXZxj/gVlZouayONuxUV
+86uGHom3K/Ac9J7RMciNfVbh+V08rSZx4aEfTKx3kkp+M2tAHNxpcNpLlYbZ
+vumfutveiZNeZM3oUKXj06wrwf5rh8UzVVmUjWPEfnaTwmV7Hojtt0RM5G6j
+ISfHN0P5WI94dUPos/Of5fA0sKl0dtiIOFl/2uwKpixMRK6j35qZsFJ4WeL9
+gIGG5rVpifl6GBtbcTMvnoPZz8XuSxV5KBj/k0SlKSLCte78CQU9cB8Z2p1U
+lkNB4cNw/au6mBzbkbEtjQO/9L6ScXM9KNU3Xbrwhov083rXtAp1MeywKWWD
+oxys1dct3vFdD9+S3QJ2/ZKH+2rJN/I5PEQs+V13KUge1NEa6vJIPbw0/kmZ
+1iIPHY0a9awdfPjmThRdMmRD/VZ3nfYnZfiwj4gz/ZXhFevU/1+2Kqa3qqbG
+26th/SJ/e+lfqiiqb95dqKOJO4v05e69YUNfIsx78KkiftzLTJc2pCG3MWv7
+gBUHC2n7vgZGsVBy6/oeDXUVJNbZ5BkmTIn9DjJ/v7NVAoaWScgM/hGfqpx6
+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
+   "], {
+    {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[0.014553193894800618`], 
+     ArrowBox[{1, 2}, 0.07454357285245378], 
+     ArrowBox[{1, 3}, 0.07454357285245378], 
+     ArrowBox[{1, 4}, 0.07454357285245378], 
+     ArrowBox[{1, 5}, 0.07454357285245378], 
+     ArrowBox[{1, 6}, 0.07454357285245378], 
+     ArrowBox[{1, 7}, 0.07454357285245378], 
+     ArrowBox[{1, 8}, 0.07454357285245378], 
+     ArrowBox[{2, 9}, 0.07454357285245378], 
+     ArrowBox[{3, 36}, 0.07454357285245378], 
+     ArrowBox[{4, 46}, 0.07454357285245378], 
+     ArrowBox[{5, 47}, 0.07454357285245378], 
+     ArrowBox[{6, 49}, 0.07454357285245378], 
+     ArrowBox[{6, 50}, 0.07454357285245378], 
+     ArrowBox[{7, 11}, 0.07454357285245378], 
+     ArrowBox[{7, 36}, 0.07454357285245378], 
+     ArrowBox[{7, 66}, 0.07454357285245378], 
+     ArrowBox[{7, 67}, 0.07454357285245378], 
+     ArrowBox[{7, 68}, 0.07454357285245378], 
+     ArrowBox[{7, 69}, 0.07454357285245378], 
+     ArrowBox[{7, 70}, 0.07454357285245378], 
+     ArrowBox[{7, 71}, 0.07454357285245378], 
+     ArrowBox[{7, 72}, 0.07454357285245378], 
+     ArrowBox[{7, 73}, 0.07454357285245378], 
+     ArrowBox[{7, 74}, 0.07454357285245378], 
+     ArrowBox[{7, 75}, 0.07454357285245378], 
+     ArrowBox[{7, 76}, 0.07454357285245378], 
+     ArrowBox[{7, 77}, 0.07454357285245378], 
+     ArrowBox[{8, 36}, 0.07454357285245378], 
+     ArrowBox[{8, 120}, 0.07454357285245378], 
+     ArrowBox[{8, 121}, 0.07454357285245378], 
+     ArrowBox[{8, 122}, 0.07454357285245378], 
+     ArrowBox[{9, 10}, 0.07454357285245378], 
+     ArrowBox[{9, 11}, 0.07454357285245378], 
+     ArrowBox[{10, 12}, 0.07454357285245378], 
+     ArrowBox[{10, 13}, 0.07454357285245378], 
+     ArrowBox[{10, 14}, 0.07454357285245378], 
+     ArrowBox[{10, 15}, 0.07454357285245378], 
+     ArrowBox[{10, 16}, 0.07454357285245378], 
+     ArrowBox[{10, 17}, 0.07454357285245378], 
+     ArrowBox[{10, 18}, 0.07454357285245378], 
+     ArrowBox[{10, 19}, 0.07454357285245378], 
+     ArrowBox[{10, 20}, 0.07454357285245378], 
+     ArrowBox[{10, 21}, 0.07454357285245378], 
+     ArrowBox[{10, 22}, 0.07454357285245378], 
+     ArrowBox[{10, 23}, 0.07454357285245378], 
+     ArrowBox[{10, 24}, 0.07454357285245378], 
+     ArrowBox[{10, 25}, 0.07454357285245378], 
+     ArrowBox[{10, 26}, 0.07454357285245378], 
+     ArrowBox[{10, 27}, 0.07454357285245378], 
+     ArrowBox[{10, 28}, 0.07454357285245378], 
+     ArrowBox[{10, 29}, 0.07454357285245378], 
+     ArrowBox[{10, 30}, 0.07454357285245378], 
+     ArrowBox[{10, 31}, 0.07454357285245378], 
+     ArrowBox[{10, 32}, 0.07454357285245378], 
+     ArrowBox[{10, 33}, 0.07454357285245378], 
+     ArrowBox[{10, 34}, 0.07454357285245378], 
+     ArrowBox[{10, 59}, 0.07454357285245378], 
+     ArrowBox[{10, 60}, 0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      11, {4.136891221530876, 3.426939171961487}, 35}], 0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      11, {4.180880339850638, 3.6300749750321937`}, 35}], 
+      0.07454357285245378], ArrowBox[{11, 61}, 0.07454357285245378], 
+     ArrowBox[{11, 62}, 0.07454357285245378], 
+     ArrowBox[{11, 90}, 0.07454357285245378], 
+     ArrowBox[{11, 91}, 0.07454357285245378], 
+     ArrowBox[{11, 92}, 0.07454357285245378], 
+     ArrowBox[{11, 93}, 0.07454357285245378], 
+     ArrowBox[{11, 94}, 0.07454357285245378], 
+     ArrowBox[{11, 95}, 0.07454357285245378], 
+     ArrowBox[{11, 96}, 0.07454357285245378], 
+     ArrowBox[{11, 97}, 0.07454357285245378], 
+     ArrowBox[{11, 98}, 0.07454357285245378], 
+     ArrowBox[{11, 99}, 0.07454357285245378], 
+     ArrowBox[{11, 100}, 0.07454357285245378], 
+     ArrowBox[{11, 101}, 0.07454357285245378], 
+     ArrowBox[{36, 37}, 0.07454357285245378], 
+     ArrowBox[{36, 38}, 0.07454357285245378], 
+     ArrowBox[{36, 39}, 0.07454357285245378], 
+     ArrowBox[{36, 40}, 0.07454357285245378], 
+     ArrowBox[{36, 41}, 0.07454357285245378], 
+     ArrowBox[{36, 42}, 0.07454357285245378], 
+     ArrowBox[{36, 43}, 0.07454357285245378], 
+     ArrowBox[{36, 44}, 0.07454357285245378], 
+     ArrowBox[{36, 45}, 0.07454357285245378], 
+     ArrowBox[{36, 102}, 0.07454357285245378], 
+     ArrowBox[{36, 107}, 0.07454357285245378], 
+     ArrowBox[{36, 108}, 0.07454357285245378], 
+     ArrowBox[{36, 109}, 0.07454357285245378], 
+     ArrowBox[{36, 110}, 0.07454357285245378], 
+     ArrowBox[{36, 123}, 0.07454357285245378], 
+     ArrowBox[{36, 124}, 0.07454357285245378], 
+     ArrowBox[{36, 125}, 0.07454357285245378], 
+     ArrowBox[{36, 126}, 0.07454357285245378], 
+     ArrowBox[{36, 127}, 0.07454357285245378], 
+     ArrowBox[{36, 128}, 0.07454357285245378], 
+     ArrowBox[{36, 129}, 0.07454357285245378], 
+     ArrowBox[{36, 130}, 0.07454357285245378], 
+     ArrowBox[{36, 131}, 0.07454357285245378], 
+     ArrowBox[{36, 132}, 0.07454357285245378], 
+     ArrowBox[{36, 133}, 0.07454357285245378], 
+     ArrowBox[{36, 134}, 0.07454357285245378], 
+     ArrowBox[{36, 135}, 0.07454357285245378], 
+     ArrowBox[{36, 136}, 0.07454357285245378], 
+     ArrowBox[{36, 137}, 0.07454357285245378], 
+     ArrowBox[{36, 138}, 0.07454357285245378], 
+     ArrowBox[{36, 139}, 0.07454357285245378], 
+     ArrowBox[{36, 140}, 0.07454357285245378], 
+     ArrowBox[{36, 141}, 0.07454357285245378], 
+     ArrowBox[{36, 142}, 0.07454357285245378], 
+     ArrowBox[{36, 143}, 0.07454357285245378], 
+     ArrowBox[{36, 144}, 0.07454357285245378], 
+     ArrowBox[{36, 145}, 0.07454357285245378], 
+     ArrowBox[{36, 146}, 0.07454357285245378], 
+     ArrowBox[{36, 147}, 0.07454357285245378], 
+     ArrowBox[{36, 148}, 0.07454357285245378], 
+     ArrowBox[{36, 149}, 0.07454357285245378], 
+     ArrowBox[{36, 150}, 0.07454357285245378], 
+     ArrowBox[{36, 151}, 0.07454357285245378], 
+     ArrowBox[{36, 152}, 0.07454357285245378], 
+     ArrowBox[{36, 153}, 0.07454357285245378], 
+     ArrowBox[{36, 154}, 0.07454357285245378], 
+     ArrowBox[{36, 155}, 0.07454357285245378], 
+     ArrowBox[{36, 156}, 0.07454357285245378], 
+     ArrowBox[{36, 157}, 0.07454357285245378], 
+     ArrowBox[{36, 158}, 0.07454357285245378], 
+     ArrowBox[{36, 159}, 0.07454357285245378], 
+     ArrowBox[{36, 160}, 0.07454357285245378], 
+     ArrowBox[{36, 161}, 0.07454357285245378], 
+     ArrowBox[{36, 162}, 0.07454357285245378], 
+     ArrowBox[{36, 163}, 0.07454357285245378], 
+     ArrowBox[{36, 164}, 0.07454357285245378], 
+     ArrowBox[{36, 165}, 0.07454357285245378], 
+     ArrowBox[{36, 166}, 0.07454357285245378], 
+     ArrowBox[{36, 167}, 0.07454357285245378], 
+     ArrowBox[{36, 168}, 0.07454357285245378], 
+     ArrowBox[{36, 169}, 0.07454357285245378], 
+     ArrowBox[{36, 170}, 0.07454357285245378], 
+     ArrowBox[{36, 171}, 0.07454357285245378], 
+     ArrowBox[{36, 172}, 0.07454357285245378], 
+     ArrowBox[{36, 173}, 0.07454357285245378], 
+     ArrowBox[{36, 174}, 0.07454357285245378], 
+     ArrowBox[{47, 48}, 0.07454357285245378], 
+     ArrowBox[{49, 51}, 0.07454357285245378], 
+     ArrowBox[{50, 10}, 0.07454357285245378], 
+     ArrowBox[{50, 11}, 0.07454357285245378], 
+     ArrowBox[{50, 52}, 0.07454357285245378], 
+     ArrowBox[{50, 53}, 0.07454357285245378], 
+     ArrowBox[{52, 54}, 0.07454357285245378], 
+     ArrowBox[{52, 55}, 0.07454357285245378], 
+     ArrowBox[{53, 63}, 0.07454357285245378], 
+     ArrowBox[{54, 56}, 0.07454357285245378], 
+     ArrowBox[{54, 57}, 0.07454357285245378], 
+     ArrowBox[{54, 58}, 0.07454357285245378], 
+     ArrowBox[{63, 64}, 0.07454357285245378], 
+     ArrowBox[{63, 65}, 0.07454357285245378], 
+     ArrowBox[{66, 78}, 0.07454357285245378], 
+     ArrowBox[{66, 79}, 0.07454357285245378], 
+     ArrowBox[{66, 80}, 0.07454357285245378], 
+     ArrowBox[{66, 81}, 0.07454357285245378], 
+     ArrowBox[{66, 82}, 0.07454357285245378], 
+     ArrowBox[{66, 83}, 0.07454357285245378], 
+     ArrowBox[{66, 84}, 0.07454357285245378], 
+     ArrowBox[{66, 85}, 0.07454357285245378], 
+     ArrowBox[{66, 86}, 0.07454357285245378], 
+     ArrowBox[{66, 87}, 0.07454357285245378], 
+     ArrowBox[{66, 88}, 0.07454357285245378], 
+     ArrowBox[{66, 89}, 0.07454357285245378], 
+     ArrowBox[{68, 102}, 0.07454357285245378], 
+     ArrowBox[{70, 106}, 0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      102, {11.274148433113272`, 3.004453260102847}, 103}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      102, {11.212047978146735`, 2.5430416468487866`}, 103}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      102, {10.999849866795529`, 2.577279279940599}, 104}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      102, {10.737741566171412`, 2.3620699906627953`}, 104}], 
+      0.07454357285245378], ArrowBox[{102, 111}, 0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      103, {12.429390467187844`, 2.6554229104432823`}, 105}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      103, {12.407693988529468`, 2.5989867243373768`}, 105}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      103, {12.385892553963535`, 2.5422775304488865`}, 105}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      103, {12.364054884339918`, 2.4854740833384987`}, 105}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      103, {12.34225344977395, 2.4287648890693063`}, 105}], 
+      0.07454357285245378], 
+     ArrowBox[BezierCurveBox[{
+      103, {12.320556971115588`, 2.372328703014366}, 105}], 
+      0.07454357285245378], ArrowBox[{103, 112}, 0.07454357285245378], 
+     ArrowBox[{103, 113}, 0.07454357285245378], 
+     ArrowBox[{103, 114}, 0.07454357285245378], 
+     ArrowBox[{103, 115}, 0.07454357285245378], 
+     ArrowBox[{103, 116}, 0.07454357285245378], 
+     ArrowBox[{103, 117}, 0.07454357285245378], 
+     ArrowBox[{103, 118}, 0.07454357285245378], 
+     ArrowBox[{104, 119}, 0.07454357285245378], 
+     ArrowBox[{107, 103}, 0.07454357285245378], 
+     ArrowBox[{108, 103}, 0.07454357285245378], 
+     ArrowBox[{109, 103}, 0.07454357285245378], 
+     ArrowBox[{110, 103}, 0.07454357285245378]}, 
+    {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+     DiskBox[1, 0.07454357285245378], DiskBox[2, 0.07454357285245378], 
+     DiskBox[3, 0.07454357285245378], DiskBox[4, 0.07454357285245378], 
+     DiskBox[5, 0.07454357285245378], DiskBox[6, 0.07454357285245378], 
+     DiskBox[7, 0.07454357285245378], DiskBox[8, 0.07454357285245378], 
+     DiskBox[9, 0.07454357285245378], DiskBox[10, 0.07454357285245378], 
+     DiskBox[11, 0.07454357285245378], DiskBox[12, 0.07454357285245378], 
+     DiskBox[13, 0.07454357285245378], DiskBox[14, 0.07454357285245378], 
+     DiskBox[15, 0.07454357285245378], DiskBox[16, 0.07454357285245378], 
+     DiskBox[17, 0.07454357285245378], DiskBox[18, 0.07454357285245378], 
+     DiskBox[19, 0.07454357285245378], DiskBox[20, 0.07454357285245378], 
+     DiskBox[21, 0.07454357285245378], DiskBox[22, 0.07454357285245378], 
+     DiskBox[23, 0.07454357285245378], DiskBox[24, 0.07454357285245378], 
+     DiskBox[25, 0.07454357285245378], DiskBox[26, 0.07454357285245378], 
+     DiskBox[27, 0.07454357285245378], DiskBox[28, 0.07454357285245378], 
+     DiskBox[29, 0.07454357285245378], DiskBox[30, 0.07454357285245378], 
+     DiskBox[31, 0.07454357285245378], DiskBox[32, 0.07454357285245378], 
+     DiskBox[33, 0.07454357285245378], DiskBox[34, 0.07454357285245378], 
+     DiskBox[35, 0.07454357285245378], DiskBox[36, 0.07454357285245378], 
+     DiskBox[37, 0.07454357285245378], DiskBox[38, 0.07454357285245378], 
+     DiskBox[39, 0.07454357285245378], DiskBox[40, 0.07454357285245378], 
+     DiskBox[41, 0.07454357285245378], DiskBox[42, 0.07454357285245378], 
+     DiskBox[43, 0.07454357285245378], DiskBox[44, 0.07454357285245378], 
+     DiskBox[45, 0.07454357285245378], DiskBox[46, 0.07454357285245378], 
+     DiskBox[47, 0.07454357285245378], DiskBox[48, 0.07454357285245378], 
+     DiskBox[49, 0.07454357285245378], DiskBox[50, 0.07454357285245378], 
+     DiskBox[51, 0.07454357285245378], DiskBox[52, 0.07454357285245378], 
+     DiskBox[53, 0.07454357285245378], DiskBox[54, 0.07454357285245378], 
+     DiskBox[55, 0.07454357285245378], DiskBox[56, 0.07454357285245378], 
+     DiskBox[57, 0.07454357285245378], DiskBox[58, 0.07454357285245378], 
+     DiskBox[59, 0.07454357285245378], DiskBox[60, 0.07454357285245378], 
+     DiskBox[61, 0.07454357285245378], DiskBox[62, 0.07454357285245378], 
+     DiskBox[63, 0.07454357285245378], DiskBox[64, 0.07454357285245378], 
+     DiskBox[65, 0.07454357285245378], DiskBox[66, 0.07454357285245378], 
+     DiskBox[67, 0.07454357285245378], DiskBox[68, 0.07454357285245378], 
+     DiskBox[69, 0.07454357285245378], DiskBox[70, 0.07454357285245378], 
+     DiskBox[71, 0.07454357285245378], DiskBox[72, 0.07454357285245378], 
+     DiskBox[73, 0.07454357285245378], DiskBox[74, 0.07454357285245378], 
+     DiskBox[75, 0.07454357285245378], DiskBox[76, 0.07454357285245378], 
+     DiskBox[77, 0.07454357285245378], DiskBox[78, 0.07454357285245378], 
+     DiskBox[79, 0.07454357285245378], DiskBox[80, 0.07454357285245378], 
+     DiskBox[81, 0.07454357285245378], DiskBox[82, 0.07454357285245378], 
+     DiskBox[83, 0.07454357285245378], DiskBox[84, 0.07454357285245378], 
+     DiskBox[85, 0.07454357285245378], DiskBox[86, 0.07454357285245378], 
+     DiskBox[87, 0.07454357285245378], DiskBox[88, 0.07454357285245378], 
+     DiskBox[89, 0.07454357285245378], DiskBox[90, 0.07454357285245378], 
+     DiskBox[91, 0.07454357285245378], DiskBox[92, 0.07454357285245378], 
+     DiskBox[93, 0.07454357285245378], DiskBox[94, 0.07454357285245378], 
+     DiskBox[95, 0.07454357285245378], DiskBox[96, 0.07454357285245378], 
+     DiskBox[97, 0.07454357285245378], DiskBox[98, 0.07454357285245378], 
+     DiskBox[99, 0.07454357285245378], DiskBox[100, 0.07454357285245378], 
+     DiskBox[101, 0.07454357285245378], DiskBox[102, 0.07454357285245378], 
+     DiskBox[103, 0.07454357285245378], DiskBox[104, 0.07454357285245378], 
+     DiskBox[105, 0.07454357285245378], DiskBox[106, 0.07454357285245378], 
+     DiskBox[107, 0.07454357285245378], DiskBox[108, 0.07454357285245378], 
+     DiskBox[109, 0.07454357285245378], DiskBox[110, 0.07454357285245378], 
+     DiskBox[111, 0.07454357285245378], DiskBox[112, 0.07454357285245378], 
+     DiskBox[113, 0.07454357285245378], DiskBox[114, 0.07454357285245378], 
+     DiskBox[115, 0.07454357285245378], DiskBox[116, 0.07454357285245378], 
+     DiskBox[117, 0.07454357285245378], DiskBox[118, 0.07454357285245378], 
+     DiskBox[119, 0.07454357285245378], DiskBox[120, 0.07454357285245378], 
+     DiskBox[121, 0.07454357285245378], DiskBox[122, 0.07454357285245378], 
+     DiskBox[123, 0.07454357285245378], DiskBox[124, 0.07454357285245378], 
+     DiskBox[125, 0.07454357285245378], DiskBox[126, 0.07454357285245378], 
+     DiskBox[127, 0.07454357285245378], DiskBox[128, 0.07454357285245378], 
+     DiskBox[129, 0.07454357285245378], DiskBox[130, 0.07454357285245378], 
+     DiskBox[131, 0.07454357285245378], DiskBox[132, 0.07454357285245378], 
+     DiskBox[133, 0.07454357285245378], DiskBox[134, 0.07454357285245378], 
+     DiskBox[135, 0.07454357285245378], DiskBox[136, 0.07454357285245378], 
+     DiskBox[137, 0.07454357285245378], DiskBox[138, 0.07454357285245378], 
+     DiskBox[139, 0.07454357285245378], DiskBox[140, 0.07454357285245378], 
+     DiskBox[141, 0.07454357285245378], DiskBox[142, 0.07454357285245378], 
+     DiskBox[143, 0.07454357285245378], DiskBox[144, 0.07454357285245378], 
+     DiskBox[145, 0.07454357285245378], DiskBox[146, 0.07454357285245378], 
+     DiskBox[147, 0.07454357285245378], DiskBox[148, 0.07454357285245378], 
+     DiskBox[149, 0.07454357285245378], DiskBox[150, 0.07454357285245378], 
+     DiskBox[151, 0.07454357285245378], DiskBox[152, 0.07454357285245378], 
+     DiskBox[153, 0.07454357285245378], DiskBox[154, 0.07454357285245378], 
+     DiskBox[155, 0.07454357285245378], DiskBox[156, 0.07454357285245378], 
+     DiskBox[157, 0.07454357285245378], DiskBox[158, 0.07454357285245378], 
+     DiskBox[159, 0.07454357285245378], DiskBox[160, 0.07454357285245378], 
+     DiskBox[161, 0.07454357285245378], DiskBox[162, 0.07454357285245378], 
+     DiskBox[163, 0.07454357285245378], DiskBox[164, 0.07454357285245378], 
+     DiskBox[165, 0.07454357285245378], DiskBox[166, 0.07454357285245378], 
+     DiskBox[167, 0.07454357285245378], DiskBox[168, 0.07454357285245378], 
+     DiskBox[169, 0.07454357285245378], DiskBox[170, 0.07454357285245378], 
+     DiskBox[171, 0.07454357285245378], DiskBox[172, 0.07454357285245378], 
+     DiskBox[173, 0.07454357285245378], DiskBox[174, 0.07454357285245378]}}],
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImageSize->{Automatic, 378.6916965384923}]], "Output",ExpressionUUID->\
+"e0b0ae20-f5ed-4068-b838-eca43eaf47d8"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[GraphicsComplexBox[CompressedData["
+1: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
+V8scbZ/SA84tmzUPzTJRdPhV+9RWbPPCxfK0dDR40iNk+2tsImXA5UoKumTb
+oRAbzQZ1wTmFOgZdqFC/1m9nIBscx74w/FQ7Ucn9cU8RZ7weig57j8t+Q/Sv
+JY5Zlri+4E0sm2UdaNmu+pvr1PD+GbDt/7oc75ew2aG1C3H70ZONdoptyLba
+bO/GcRZI380yitT+ivK9Ky9x/2UBp3yTQaJFKyrWZt0wD8L18cz/fGe4Ev21
+1ONgsjN+HvV8fGZoXTnaWV+pO2aJPdSvMv/vv5GJ59L1SA2vz1J5r1s7S5AP
+aAoFLMT5Ad2CXL5CpDMoUZj8E3++cuEWbqUEyrTieVP6Bde7/fHN3aY5aAO/
+9fHPJdhVkqX68k9RRubBMf7LbKgsGj9rv6MbrfPOvLfMH18AmWWC0Ve70JvS
+hMfgwAY7v6U9rW86UVTgmf2eZth7NSvsJr8hwva6YspKNiRlf99Tq/QNJf/7
+FfUwcP3BPEeDbDvQroS1c41HWJDk8mejiUc7Mgg9UZ/0iQWOk/4XV51pQyZW
+bS2KfkyQ3mMfmuf1HmV1eItc2YXreXzxdGvMW/RK82mvsBk2g2bqkFGFvjo0
+votdyQTQLWW7cCrQ+Pveheoi0/shQ6ri7GtkKJLDXzOC63cJ3S/gW4KA0zQZ
+3ogvKCn/XLl1BeiIZ/n69UW4/ru1nzcse4XmGawdiIjC5/3I+/R7vj3IQ0N6
+mb4PG7T9Qnf+nOpGMpExs6a2sSH1wFa9/X7dSPnLieQGhM/zYpYo36culFn2
+esE7eTaUzoorb1LvQjtXMW07BfF6rLLeOf9IJ8r62L1xxQALbJSUsu7c/oYy
+41RlTtexwG51QktOfgfK3XVFda43ExgFt9QaO+vRXKftOVH2eD1cGZYm/HUo
+34o+aYSYcDG5xFCMVoPu3BNuXqKAz4tQqMbFmreoSTJ2k8o8JjSNCxl9D69C
+13qUtQ4O4foNt34R0y9HSy7Z725twPUGlp1WXlqG7oUffBRToAeOUpoL83ML
+kL7sgINS+PT537Y8I6YX3Sw08318iA0+P//c9uBAL+IlXF/ZbMHrw35ECMr1
+orCUieNTbDZkLneW7MjtQWf2TgxWS7MhRIDmvofVg545LtlSge+7uo+enbdj
+u1FUl37ZOL7vrKNYfJ8+dCG19A9ue95iOxQwrWldSM/b1Gf6vqPLddf+2NeI
+VqcMrrmM77uUS3cDiv0/ooKfNfrBbCbElsZZLtv4Ab0sl9YokmFCdplW+8PB
+WnTlUWLb7rlM8C+86K/r8B69KFo3Z0e/Hoxm924PuVyNFEZ6RV7V4/W4aP2l
+X7YCJYc+8rmYrwd98uH3BLJL0f8Bd9Ev+w==
+    "], {
+     {RGBColor[0.5, 0., 0.], Arrowheads[{{0.007990960104178593, 0.8}}], 
+      ArrowBox[{1, 2}], ArrowBox[{1, 3}], ArrowBox[{1, 4}], ArrowBox[{1, 5}], 
+      ArrowBox[{1, 6}], ArrowBox[{1, 7}], ArrowBox[{1, 8}], ArrowBox[{2, 9}], 
+      ArrowBox[{3, 36}], ArrowBox[{4, 46}], ArrowBox[{5, 47}], 
+      ArrowBox[{6, 49}], ArrowBox[{6, 50}], ArrowBox[{7, 66}], 
+      ArrowBox[{7, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187,
+        188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 
+       11}], ArrowBox[{7, 67}], ArrowBox[{7, 68}], ArrowBox[{7, 69}], 
+      ArrowBox[{7, 70}], ArrowBox[{7, 71}], ArrowBox[{7, 36}], 
+      ArrowBox[{7, 72}], ArrowBox[{7, 73}], ArrowBox[{7, 74}], 
+      ArrowBox[{7, 75}], ArrowBox[{7, 76}], ArrowBox[{7, 77}], 
+      ArrowBox[{8, 36}], ArrowBox[{8, 120}], ArrowBox[{8, 121}], 
+      ArrowBox[{8, 122}], ArrowBox[{9, 10}], ArrowBox[{9, 11}], 
+      ArrowBox[{10, 12}], ArrowBox[{10, 13}], ArrowBox[{10, 14}], 
+      ArrowBox[{10, 15}], ArrowBox[{10, 16}], ArrowBox[{10, 17}], 
+      ArrowBox[{10, 18}], ArrowBox[{10, 19}], ArrowBox[{10, 20}], 
+      ArrowBox[{10, 21}], ArrowBox[{10, 22}], ArrowBox[{10, 23}], 
+      ArrowBox[{10, 24}], ArrowBox[{10, 25}], ArrowBox[{10, 26}], 
+      ArrowBox[{10, 27}], ArrowBox[{10, 28}], ArrowBox[{10, 29}], 
+      ArrowBox[{10, 30}], ArrowBox[{10, 31}], ArrowBox[{10, 32}], 
+      ArrowBox[{10, 33}], ArrowBox[{10, 34}], ArrowBox[{10, 59}], 
+      ArrowBox[{10, 60}], 
+      ArrowBox[{11, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 
+       213, 214, 215, 216, 217, 35}], 
+      ArrowBox[{11, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 
+       229, 230, 231, 232, 233, 35}], ArrowBox[{11, 61}], ArrowBox[{11, 62}], 
+      ArrowBox[{11, 90}], ArrowBox[{11, 91}], ArrowBox[{11, 92}], 
+      ArrowBox[{11, 93}], ArrowBox[{11, 94}], ArrowBox[{11, 95}], 
+      ArrowBox[{11, 96}], ArrowBox[{11, 97}], ArrowBox[{11, 98}], 
+      ArrowBox[{11, 99}], ArrowBox[{11, 100}], ArrowBox[{11, 101}], 
+      ArrowBox[{36, 37}], ArrowBox[{36, 38}], ArrowBox[{36, 39}], 
+      ArrowBox[{36, 40}], ArrowBox[{36, 41}], ArrowBox[{36, 42}], 
+      ArrowBox[{36, 43}], ArrowBox[{36, 44}], ArrowBox[{36, 45}], 
+      ArrowBox[{36, 107}], ArrowBox[{36, 108}], ArrowBox[{36, 109}], 
+      ArrowBox[{36, 110}], ArrowBox[{36, 102}], ArrowBox[{36, 123}], 
+      ArrowBox[{36, 124}], ArrowBox[{36, 125}], ArrowBox[{36, 126}], 
+      ArrowBox[{36, 127}], ArrowBox[{36, 128}], ArrowBox[{36, 129}], 
+      ArrowBox[{36, 130}], ArrowBox[{36, 131}], ArrowBox[{36, 132}], 
+      ArrowBox[{36, 133}], ArrowBox[{36, 134}], ArrowBox[{36, 135}], 
+      ArrowBox[{36, 136}], ArrowBox[{36, 137}], ArrowBox[{36, 138}], 
+      ArrowBox[{36, 139}], ArrowBox[{36, 140}], ArrowBox[{36, 141}], 
+      ArrowBox[{36, 142}], ArrowBox[{36, 143}], ArrowBox[{36, 144}], 
+      ArrowBox[{36, 145}], ArrowBox[{36, 146}], ArrowBox[{36, 147}], 
+      ArrowBox[{36, 148}], ArrowBox[{36, 149}], ArrowBox[{36, 150}], 
+      ArrowBox[{36, 151}], ArrowBox[{36, 152}], ArrowBox[{36, 153}], 
+      ArrowBox[{36, 154}], ArrowBox[{36, 155}], ArrowBox[{36, 156}], 
+      ArrowBox[{36, 157}], ArrowBox[{36, 158}], ArrowBox[{36, 159}], 
+      ArrowBox[{36, 160}], ArrowBox[{36, 161}], ArrowBox[{36, 162}], 
+      ArrowBox[{36, 163}], ArrowBox[{36, 164}], ArrowBox[{36, 165}], 
+      ArrowBox[{36, 166}], ArrowBox[{36, 167}], ArrowBox[{36, 168}], 
+      ArrowBox[{36, 169}], ArrowBox[{36, 170}], ArrowBox[{36, 171}], 
+      ArrowBox[{36, 172}], ArrowBox[{36, 173}], ArrowBox[{36, 174}], 
+      ArrowBox[{47, 48}], ArrowBox[{49, 51}], ArrowBox[{50, 52}], 
+      ArrowBox[{50, 10}], ArrowBox[{50, 11}], ArrowBox[{50, 53}], 
+      ArrowBox[{52, 54}], ArrowBox[{52, 55}], ArrowBox[{53, 63}], 
+      ArrowBox[{54, 56}], ArrowBox[{54, 57}], ArrowBox[{54, 58}], 
+      ArrowBox[{63, 64}], ArrowBox[{63, 65}], ArrowBox[{66, 78}], 
+      ArrowBox[{66, 79}], ArrowBox[{66, 80}], ArrowBox[{66, 81}], 
+      ArrowBox[{66, 82}], ArrowBox[{66, 83}], ArrowBox[{66, 84}], 
+      ArrowBox[{66, 85}], ArrowBox[{66, 86}], ArrowBox[{66, 87}], 
+      ArrowBox[{66, 88}], ArrowBox[{66, 89}], ArrowBox[{68, 102}], 
+      ArrowBox[{70, 106}], 
+      ArrowBox[{102, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 
+       245, 246, 247, 248, 249, 103}], 
+      ArrowBox[{102, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 
+       261, 262, 263, 264, 265, 103}], 
+      ArrowBox[{102, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 
+       277, 278, 279, 280, 281, 104}], 
+      ArrowBox[{102, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 
+       293, 294, 295, 296, 297, 104}], ArrowBox[{102, 111}], 
+      ArrowBox[{103, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 
+       309, 310, 311, 312, 313, 105}], 
+      ArrowBox[{103, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 
+       325, 326, 327, 328, 329, 105}], 
+      ArrowBox[{103, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 
+       341, 342, 343, 344, 345, 105}], 
+      ArrowBox[{103, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 
+       357, 358, 359, 360, 361, 105}], 
+      ArrowBox[{103, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 
+       373, 374, 375, 376, 377, 105}], 
+      ArrowBox[{103, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 
+       389, 390, 391, 392, 393, 105}], ArrowBox[{103, 112}], 
+      ArrowBox[{103, 113}], ArrowBox[{103, 114}], ArrowBox[{103, 115}], 
+      ArrowBox[{103, 116}], ArrowBox[{103, 117}], ArrowBox[{103, 118}], 
+      ArrowBox[{104, 119}], ArrowBox[{107, 103}], ArrowBox[{108, 103}], 
+      ArrowBox[{109, 103}], ArrowBox[{110, 103}]}, 
+     {RGBColor[0, 0, 0.7], 
+      TagBox[
+       TooltipBox[PointBox[1],
+        "\"My Games\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "My Games", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[2],
+        "\"Dishonored\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Dishonored", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[3],
+        "\"Fallout4\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Fallout4", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[4],
+        "\"FasterThanLight\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "FasterThanLight", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[5],
+        "\"Rainbow Six - Siege\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Rainbow Six - Siege", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[6],
+        "\"Rocket League\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Rocket League", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[7],
+        "\"Sid Meier's Civilization 5\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Sid Meier's Civilization 5", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[8],
+        "\"Skyrim\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Skyrim", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[9],
+        "\"DishonoredGame\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredGame", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[10],
+        "\"Config\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Config", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[11],
+        "\"Logs\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Logs", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[12],
+        "\"DishonoredAI.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredAI.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[13],
+        "\"DishonoredAILocomotion.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredAILocomotion.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[14],
+        "\"DishonoredCamera.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredCamera.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[15],
+        "\"DishonoredCompat.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredCompat.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[16],
+        "\"DishonoredContactSystem.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredContactSystem.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[17],
+        "\"DishonoredConversation.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredConversation.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[18],
+        "\"DishonoredDLC06.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredDLC06.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[19],
+        "\"DishonoredDLC07.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredDLC07.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[20],
+        "\"DishonoredEngine.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredEngine.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[21],
+        "\"DishonoredGame.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredGame.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[22],
+        "\"DishonoredInput.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredInput.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[23],
+        "\"DishonoredItem.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredItem.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[24],
+        "\"DishonoredLevel.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredLevel.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[25],
+        "\"DishonoredLightmass.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredLightmass.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[26],
+        "\"DishonoredNPC.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredNPC.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[27],
+        "\"DishonoredPawn.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredPawn.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[28],
+        "\"DishonoredPlayer.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredPlayer.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[29],
+        "\"DishonoredPlayerState.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredPlayerState.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[30],
+        "\"DishonoredPower.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredPower.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[31],
+        "\"DishonoredStat.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredStat.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[32],
+        "\"DishonoredUI.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredUI.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[33],
+        "\"DishonoredWeapon.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredWeapon.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[34],
+        "\"DishonoredWeaponRanged.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DishonoredWeaponRanged.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[35],
+        "\"Launch.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Launch.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[36],
+        "\"Saves\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Saves", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[37],
+        "\"Autosave1_7EDECDAF_5365726765_Commonwealth_001457_20180624042530_\
+16_2.fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Autosave1_7EDECDAF_5365726765_Commonwealth_001457_20180624042530_16_\
+2.fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[38],
+        "\"Autosave2_7EDECDAF_5365726765_CambridgePD01_001453_20180624042102_\
+16_2.fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Autosave2_7EDECDAF_5365726765_CambridgePD01_001453_20180624042102_16_\
+2.fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[39],
+        "\"Autosave3_7EDECDAF_5365726765_CambridgePD01_001455_20180624042240_\
+16_2.fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Autosave3_7EDECDAF_5365726765_CambridgePD01_001455_20180624042240_16_\
+2.fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[40],
+        "\"Exitsave0_7EDECDAF_5365726765_Commonwealth_001458_20180624042625_\
+16_2.fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Exitsave0_7EDECDAF_5365726765_Commonwealth_001458_20180624042625_16_\
+2.fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[41],
+        "\"Save1_7EDECDAF_5365726765_Vault111Cryo_000029_20180618014751_1_2.\
+fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save1_7EDECDAF_5365726765_Vault111Cryo_000029_20180618014751_1_2.\
+fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[42],
+        "\"Save2_7EDECDAF_5365726765_Commonwealth_000329_20180618050042_6_2.\
+fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save2_7EDECDAF_5365726765_Commonwealth_000329_20180618050042_6_2.\
+fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[43],
+        "\"Save3_7EDECDAF_5365726765_DiamondCity_000556_20180618171737_9_2.\
+fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save3_7EDECDAF_5365726765_DiamondCity_000556_20180618171737_9_2.fos",
+         "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[44],
+        "\"Save4_7EDECDAF_5365726765_Commonwealth_000822_20180618203153_11_2.\
+fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save4_7EDECDAF_5365726765_Commonwealth_000822_20180618203153_11_2.\
+fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[45],
+        "\"Save5_7EDECDAF_5365726765_Commonwealth_001458_20180624042622_16_2.\
+fos\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save5_7EDECDAF_5365726765_Commonwealth_001458_20180624042622_16_2.\
+fos", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[46],
+        "\"ae_prof.sav\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ae_prof.sav", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[47],
+        "\"a9a753b2-c998-403d-bc07-361d26839576\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "a9a753b2-c998-403d-bc07-361d26839576", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[48],
+        "\"GameSettings.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "GameSettings.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[49],
+        "\"Binaries\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Binaries", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[50],
+        "\"TAGame\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "TAGame", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[51],
+        "\"Win32\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Win32", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[52],
+        "\"Cache\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Cache", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[53],
+        "\"SaveData\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "SaveData", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[54],
+        "\"WebCache\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "WebCache", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[55],
+        "\"RegionCache.cache\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "RegionCache.cache", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[56],
+        "\"\
+aHR0cHM6Ly9ybC1jZG4ucHN5b25peC5jb20vRVNwb3J0cy9Qcm9kL0V2ZW50cy5qc29u\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "aHR0cHM6Ly9ybC1jZG4ucHN5b25peC5jb20vRVNwb3J0cy9Qcm9kL0V2ZW50cy5qc29u"\
+, "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[57],
+        "\"aHR0cHM6Ly9ybC1jZG4ucHN5b25peC5jb20vTGVnYWwvUEMvRVVMQS9JTlQudHh0\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "aHR0cHM6Ly9ybC1jZG4ucHN5b25peC5jb20vTGVnYWwvUEMvRVVMQS9JTlQudHh0", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[58],
+        "\"\
+aHR0cHM6Ly9ybC1jZG4ucHN5b25peC5jb20vU3RhdGljL3plOXIzamc0MzhkZmozOGRmdTMvU3RlYW\
+0vSU5ULmpzb24=\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "aHR0cHM6Ly9ybC1jZG4ucHN5b25peC5jb20vU3RhdGljL3plOXIzamc0MzhkZmozOGRmd\
+TMvU3RlYW0vSU5ULmpzb24=", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[59],
+        "\"TAInput.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "TAInput.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[60],
+        "\"TASystemSettings.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "TASystemSettings.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[61],
+        "\"Launch-backup-2018.05.06-19.16.22.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Launch-backup-2018.05.06-19.16.22.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[62],
+        "\"Launch-backup-2018.05.06-20.18.54.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Launch-backup-2018.05.06-20.18.54.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[63],
+        "\"DBE_Production\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "DBE_Production", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[64],
+        "\"76561198044980501_1.save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "76561198044980501_1.save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[65],
+        "\"76561198044980501.save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "76561198044980501.save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[66],
+        "\"cache\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "cache", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[67],
+        "\"Maps\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Maps", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[68],
+        "\"ModdedSaves\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ModdedSaves", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[69],
+        "\"MODS\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "MODS", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[70],
+        "\"ModUserData\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ModUserData", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[71],
+        "\"Replays\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Replays", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[72],
+        "\"ScreenShots\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "ScreenShots", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[73],
+        "\"Text\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Text", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[74],
+        "\"TransferredMaps\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "TransferredMaps", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[75],
+        "\"config.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "config.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[76],
+        "\"GraphicsSettingsDX11.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "GraphicsSettingsDX11.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[77],
+        "\"UserSettings.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "UserSettings.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[78],
+        "\"downloads\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "downloads", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[79],
+        "\"images\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "images", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[80],
+        "\"Civ5CoreDatabase.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Civ5CoreDatabase.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[81],
+        "\"Civ5DebugDatabase.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Civ5DebugDatabase.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[82],
+        "\"Civ5ModsDatabase.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Civ5ModsDatabase.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[83],
+        "\"Civ5SavedGameDatabase.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Civ5SavedGameDatabase.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[84],
+        "\"Civ5UserHistoryDatabase.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Civ5UserHistoryDatabase.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[85],
+        "\"Localization-BaseGame.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Localization-BaseGame.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[86],
+        "\"Localization-Merged.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Localization-Merged.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[87],
+        "\"Localization-Mongolia.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Localization-Mongolia.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[88],
+        "\"Localization-Tablet Data 1.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Localization-Tablet Data 1.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[89],
+        "\"Localization-Upgrade 1.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Localization-Upgrade 1.db", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[90],
+        "\"achievements_debug.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "achievements_debug.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[91],
+        "\"APP.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "APP.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[92],
+        "\"Database.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Database.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[93],
+        "\"init_host.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "init_host.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[94],
+        "\"Localization.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Localization.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[95],
+        "\"Lua.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Lua.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[96],
+        "\"modding.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "modding.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[97],
+        "\"net_message_debug.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "net_message_debug.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[98],
+        "\"stopwatch.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "stopwatch.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[99],
+        "\"system_init.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "system_init.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[100],
+        "\"xml.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "xml.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[101],
+        "\"xml-perf.log\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "xml-perf.log", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[102],
+        "\"single\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "single", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[103],
+        "\"auto\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "auto", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[104],
+        "\"quick\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "quick", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[105],
+        "\"prev\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "prev", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[106],
+        "\"df3333a4-44be-4fc3-9143-21706ff451d5-1.db\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "df3333a4-44be-4fc3-9143-21706ff451d5-1.db", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[107],
+        "\"hotseat\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "hotseat", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[108],
+        "\"multi\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "multi", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[109],
+        "\"pbem\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "pbem", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[110],
+        "\"pitboss\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "pitboss", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[111],
+        "\"Montezuma_0161 AD-1010.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Montezuma_0161 AD-1010.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[112],
+        "\"AutoSave_0000 BC-4000.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_0000 BC-4000.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[113],
+        "\"AutoSave_0300 AD-1860.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_0300 AD-1860.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[114],
+        "\"AutoSave_0310 AD-1880.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_0310 AD-1880.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[115],
+        "\"AutoSave_0320 AD-1900.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_0320 AD-1900.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[116],
+        "\"AutoSave_0330 AD-1910.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_0330 AD-1910.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[117],
+        "\"AutoSave_0340 AD-1920.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_0340 AD-1920.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[118],
+        "\"AutoSave_Initial_0000 BC-4000.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "AutoSave_Initial_0000 BC-4000.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[119],
+        "\"QuickSave.Civ5Save\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "QuickSave.Civ5Save", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[120],
+        "\"RendererInfo.txt\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "RendererInfo.txt", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[121],
+        "\"Skyrim.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Skyrim.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[122],
+        "\"SkyrimPrefs.ini\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "SkyrimPrefs.ini", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[123],
+        "\"autosave1.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "autosave1.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[124],
+        "\"autosave1.ess.bak\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "autosave1.ess.bak", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[125],
+        "\"autosave2.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "autosave2.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[126],
+        "\"autosave2.ess.bak\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "autosave2.ess.bak", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[127],
+        "\"autosave3.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "autosave3.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[128],
+        "\"autosave3.ess.bak\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "autosave3.ess.bak", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[129],
+        "\"quicksave.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "quicksave.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[130],
+        "\"quicksave.ess.bak\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "quicksave.ess.bak", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[131],
+        "\"Save 10 - Burul Orgoth  Jorrvaskr  05.16.14.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 10 - Burul Orgoth  Jorrvaskr  05.16.14.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[132],
+        "\"Save 12 - Burul Orgoth  Skyrim  08.01.12.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 12 - Burul Orgoth  Skyrim  08.01.12.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[133],
+        "\"Save 13 - Burul Orgoth  Skyrim  08.32.49.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 13 - Burul Orgoth  Skyrim  08.32.49.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[134],
+        "\"Save 14 - Burul Orgoth  The Ragged Flagon  09.25.17.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 14 - Burul Orgoth  The Ragged Flagon  09.25.17.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[135],
+        "\"Save 16 - Burul Orgoth  Skyrim  10.35.37.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 16 - Burul Orgoth  Skyrim  10.35.37.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[136],
+        "\"Save 17 - Burul Orgoth  Goldenglow Estate Second Floor  \
+10.49.04.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 17 - Burul Orgoth  Goldenglow Estate Second Floor  \
+10.49.04.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[137],
+        "\"Save 18 - Burul Orgoth  The Bannered Mare  11.47.01.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 18 - Burul Orgoth  The Bannered Mare  11.47.01.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[138],
+        "\"Save 19 - Burul Orgoth  Whiterun  11.49.59.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 19 - Burul Orgoth  Whiterun  11.49.59.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[139],
+        "\"Save 1 - Prisoner  Skyrim  00.07.20.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 1 - Prisoner  Skyrim  00.07.20.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[140],
+        "\"Save 20 - Dar'raab  Skyrim  00.56.39.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 20 - Dar'raab  Skyrim  00.56.39.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[141],
+        "\"Save 21 - Dar'raab  Skyrim  02.11.12.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 21 - Dar'raab  Skyrim  02.11.12.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[142],
+        "\"Save 22 - Dar'raab  Riften  02.57.01.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 22 - Dar'raab  Riften  02.57.01.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[143],
+        "\"Save 23 - Dar'raab  Mistveil Keep  04.05.27.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 23 - Dar'raab  Mistveil Keep  04.05.27.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[144],
+        "\"Save 24 - Dar'raab  Riften  06.39.08.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 24 - Dar'raab  Riften  06.39.08.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[145],
+        "\"Save 25 - Dar'raab  Castle Dour Dungeon  07.13.07.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 25 - Dar'raab  Castle Dour Dungeon  07.13.07.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[146],
+        "\"Save 26 - Dar'raab  Calcelmo's Laboratory  08.59.45.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 26 - Dar'raab  Calcelmo's Laboratory  08.59.45.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[147],
+        "\"Save 27 - Dar'raab  Skyrim  11.24.09.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 27 - Dar'raab  Skyrim  11.24.09.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[148],
+        "\"Save 28 - Dar'raab  Irkngthand Slave Pens  11.41.41.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 28 - Dar'raab  Irkngthand Slave Pens  11.41.41.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[149],
+        "\"Save 29 - Dar'raab  Dragonsreach Dungeon  11.53.06.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 29 - Dar'raab  Dragonsreach Dungeon  11.53.06.ess",
+         "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[150],
+        "\"Save 31 - Dar'raab  Dark Brotherhood Sanctuary  12.15.10.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 31 - Dar'raab  Dark Brotherhood Sanctuary  12.15.10.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[151],
+        "\"Save 33 - Prisoner  Skyrim  00.05.57.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 33 - Prisoner  Skyrim  00.05.57.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[152],
+        "\"Save 36 - Yeehaw  Riverwood Trader  01.37.25.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 36 - Yeehaw  Riverwood Trader  01.37.25.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[153],
+        "\"Save 37 - Yeehaw  Skyrim  01.47.12.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 37 - Yeehaw  Skyrim  01.47.12.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[154],
+        "\"Save 38 - Yeehaw  Bleak Falls Temple  02.11.07.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 38 - Yeehaw  Bleak Falls Temple  02.11.07.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[155],
+        "\"Save 3 - Lee  Skyrim  02.47.55.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 3 - Lee  Skyrim  02.47.55.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[156],
+        "\"Save 40 - Yeehaw  Skyrim  05.32.07.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 40 - Yeehaw  Skyrim  05.32.07.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[157],
+        "\"Save 41 - Yeehaw  Dustman's Cairn  05.40.21.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 41 - Yeehaw  Dustman's Cairn  05.40.21.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[158],
+        "\"Save 42 - Yeehaw  Dustman's Crypt  06.07.19.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 42 - Yeehaw  Dustman's Crypt  06.07.19.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[159],
+        "\"Save 43 - Yeehaw  Jorrvaskr  06.14.13.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 43 - Yeehaw  Jorrvaskr  06.14.13.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[160],
+        "\"Save 44 - Yeehaw  Skyrim  06.53.51.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 44 - Yeehaw  Skyrim  06.53.51.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[161],
+        "\"Save 45 - Yeehaw  Skyrim  07.13.09.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 45 - Yeehaw  Skyrim  07.13.09.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[162],
+        "\"Save 47 - Yeehaw  Skyrim  13.50.48.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 47 - Yeehaw  Skyrim  13.50.48.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[163],
+        "\"Save 49 - Yeehaw  Markarth  14.20.09.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 49 - Yeehaw  Markarth  14.20.09.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[164],
+        "\"Save 4 - Prisoner  Skyrim  00.08.20.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 4 - Prisoner  Skyrim  00.08.20.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[165],
+        "\"Save 50 - Yeehaw  Nchuand-Zel Excavation Site  14.31.08.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, 
+        "Save 50 - Yeehaw  Nchuand-Zel Excavation Site  14.31.08.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[166],
+        "\"Save 51 - Yeehaw  Nchuand-Zel  14.45.30.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 51 - Yeehaw  Nchuand-Zel  14.45.30.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[167],
+        "\"Save 53 - Yeehaw  Nchuand-Zel Control  15.56.41.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 53 - Yeehaw  Nchuand-Zel Control  15.56.41.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[168],
+        "\"Save 54 - Yeehaw  Understone Keep  16.11.34.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 54 - Yeehaw  Understone Keep  16.11.34.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[169],
+        "\"Save 55 - Yeehaw  Markarth  16.15.16.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 55 - Yeehaw  Markarth  16.15.16.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[170],
+        "\"Save 56 - Yeehaw  Red Eagle Ascent  16.37.03.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 56 - Yeehaw  Red Eagle Ascent  16.37.03.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[171],
+        "\"Save 6 - Prisoner  Skyrim  00.09.03.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 6 - Prisoner  Skyrim  00.09.03.ess", "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[172],
+        "\"Save 7 - Burul Orgoth  Skyrim  00.34.40.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 7 - Burul Orgoth  Skyrim  00.34.40.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[173],
+        "\"Save 8 - Burul Orgoth  Dustman's Crypt  03.40.54.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 8 - Burul Orgoth  Dustman's Crypt  03.40.54.ess", 
+        "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[PointBox[174],
+        "\"Save 9 - Burul Orgoth  Skyrim  05.14.23.ess\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "Save 9 - Burul Orgoth  Skyrim  05.14.23.ess", 
+        "Tooltip"]& ]}}],
+   Annotation[#, VertexCoordinateRules -> CompressedData["
+1:eJxV1A9MlGUcB/CXMLqUudOwoU2BQP4o2Ckngujdw/HXRD2cNcypqJjQaNJm
+xwkYh0iQZakzQEC7SsX/kdB0ncRJ6nRriQp4VtZtauLQhYVws7rr+wrv73ex
+ce8++/6ee573uef3hKzduHT9M5IkncS//Pz/X4CwZr5zpWCcVgxb/fS5My5K
+p3hbycfVMxJT7Yo1rRHX1iSFUb297GbLwLV08tndOadvv59M9VKMD5797Ypb
+jXWmSlPSSL1K9C5R+1yKWDhiSbi2eOeSCOj6HE4dcb9eZH1pqhxk52UfQJ5G
+jk87iJztCDqEPJ3c74YH2c3bmpBnkNUeeJCdd/gw8gXk7NePIGc7XXL+Ktlq
+lnO2MeYo8oXk5thjyNnqXbApk1ynPY6cbf0dNi0i5wzJOds+dAL5Ys7VXyFn
+934Bm5bw/CubkbOr27JthkQjv29X0MPRDxPJ8qf12xdGzoNKSBXW68Vb9PZh
+S8L+0mewjqx5tA+eT3b92wjP43yU7ESyU9MAzyWbi+vhBLJ0bi8cTz5zvw6e
+Qy6t3Yjzlm5X1pddtPVeySPlPKuE/4UFNYZzQij1GZLD67yqhLnW3+v8qURh
+TbdXLomuuJU2w99GHj9+1obi1VlkVyjyRMXY3ysrvOr79cv2SAPVd2i8pF3k
+O1AdRuOl4KtwLlv75nKboYTHZ2S9YTPY2L22UPw+88iFFeHwfPKZE/i+A7ye
+TdOf8zI6sOp5rIedk74K+2eg/Vv2JP/0bT/ez5zN9xr+cgvyGcMG1KeRz7qn
+Wvf8mMT1uesxnvPGoXWoTyV3HluLnO2/Yw3yFHJdI+4PP3a02vs+UQnL26uR
+e/nDu/lt3ynz4XwEOfPbdGxVwS3kqZxX/YycnTvlJ+Qp5AcOB3J2fOsN5Mnk
+ZT09yNml9d3IDeRqPaxjfxTThTyJ7Jp4HTlbHRCJ308nhol+9J0G68nnA2vQ
+v4JcWAsPsjM3eN+XuP+K9iJn/9NSj9xAPnu+ATk7s7QReTL5QdU+5OxNHfuR
+p5ALJlmRsy+FXMX7KOcD/dsXiPXPpfy4X+cpi4+S4/0693/wS8GckVyS7MnX
+sD88Plttia7cqpxn9H9JOawjWworYD37k+QaQxL3t/Xd7lOWcp7PGH4E88XT
+fE7zSTiBrPZrgeeSpaLTcCLZMmCD55GF+xxM65Ny9D/AtD4p+vsrXu+L8RF5
++FSNWCXsR4OfvrZiyf+yx+P5o12x4y35fouj/Wi+WQvPJudFydaSVd/UwLFk
+R5jsWWRN/qfwTK6/uQfWkCV1VNPjJzN4PnsEHE22Xg6Hp7Ej5DyS3Jkl5+E8
+nycMDuP6mbJfJhdODoWDySIlZXHf48m8ng7ZE9m7k+AJ7Imp8Dgeb7c09vSN
+IdvLy2BfsuX2hIQTN4baaXzaa3daV/3GNt/ZcdDo1FP92D8vLo10sWe/ty4q
+YJSg+pZK2J9sH3v+64DR48k5Fy/AL5KDEy7Bk8jOQ5fhKeT+MXezRz8bQlaX
+yg4ld664B08l7yzvhSN4vqb7cBS5eXsfPJ1s8ciO4fEXHsCvkB2/mtBPGrII
+L4JnkiOXy55FPtwuO5ZcvcsMa8n9btmzyaqOzXAc79/uYngOjw8ugak/RYZb
+NvWniL9VClN/ikjXFpj6UwT6lcHUn+I/BYTkig==
+     "]]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{Automatic, 50.91006142702862},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Input",ExpressionUUID->"5c18d949-0e65-\
+400e-9e0b-edc3b82e35c3"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -762,19 +2474,21 @@ Cell[7738, 168, 387, 7, 71, "Section",ExpressionUUID->"363992ed-65d6-4a46-9388-9
 Cell[8128, 177, 512, 10, 55, "Text",ExpressionUUID->"72b00745-65c9-40a3-989b-179e50d3deb4"],
 Cell[8643, 189, 660, 16, 65, "Input",ExpressionUUID->"c2bc93d2-50da-4c07-a37b-2893a19b38f8"],
 Cell[9306, 207, 251, 6, 33, "Text",ExpressionUUID->"f61499bf-6931-4599-b6cd-dcd47bd659bd"],
-Cell[CellGroupData[{
-Cell[9582, 217, 298, 5, 26, "Input",ExpressionUUID->"1531899f-b369-4855-a924-567b6e74f20b"],
-Cell[9883, 224, 6348, 174, 81, "Output",ExpressionUUID->"d5b9e230-ff98-4873-8cc8-33e82c2fa5af"]
-}, Open  ]]
+Cell[9560, 215, 515, 10, 52, "CodeText",ExpressionUUID->"2302b96b-3ba4-42be-bc27-77d92e4b8688"],
+Cell[10078, 227, 232, 5, 26, "Input",ExpressionUUID->"abc184f1-78f3-41d8-9d14-cf7f437eb774"],
+Cell[10313, 234, 712, 14, 74, "CodeText",ExpressionUUID->"e6091232-ce64-4b5a-9fde-f66ef5817732"],
+Cell[11028, 250, 298, 5, 26, "Input",ExpressionUUID->"1531899f-b369-4855-a924-567b6e74f20b"],
+Cell[11329, 257, 8947, 243, 61, "Text",ExpressionUUID->"f425d71c-3315-4cde-b543-d00810881dd8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16280, 404, 262, 4, 71, "Section",ExpressionUUID->"9da19663-7179-45c9-8160-ad35832309c2"],
-Cell[16545, 410, 840, 13, 77, "Text",ExpressionUUID->"45c45f6e-321c-4ce7-9657-950c1134d308"],
-Cell[17388, 425, 345, 6, 33, "Text",ExpressionUUID->"974d1d02-3f81-4f9f-a141-4f1608fd9d6a"]
+Cell[20313, 505, 262, 4, 71, "Section",ExpressionUUID->"9da19663-7179-45c9-8160-ad35832309c2"],
+Cell[20578, 511, 1258, 19, 121, "Text",ExpressionUUID->"45c45f6e-321c-4ce7-9657-950c1134d308"],
+Cell[21839, 532, 24333, 430, 394, "Output",ExpressionUUID->"e0b0ae20-f5ed-4068-b838-eca43eaf47d8"],
+Cell[46175, 964, 48759, 1179, 62, "Input",ExpressionUUID->"5c18d949-0e65-400e-9e0b-edc3b82e35c3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17770, 436, 171, 3, 71, "Section",ExpressionUUID->"a78f6e4f-dbdf-4763-a44f-16569b36e665"],
-Cell[17944, 441, 216, 4, 33, "Text",ExpressionUUID->"44146aed-2d19-4c66-bfba-1e67f1c1dfb3"]
+Cell[94971, 2148, 171, 3, 71, "Section",ExpressionUUID->"a78f6e4f-dbdf-4763-a44f-16569b36e665"],
+Cell[95145, 2153, 216, 4, 33, "Text",ExpressionUUID->"44146aed-2d19-4c66-bfba-1e67f1c1dfb3"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -1,0 +1,1919 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframDesktop 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       161,          7]
+NotebookDataLength[     91285,       1911]
+NotebookOptionsPosition[     89405,       1878]
+NotebookOutlinePosition[     89746,       1893]
+CellTagsIndexPosition[     89703,       1890]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Drop of all functions used for project", "Text",
+ CellChangeTimes->{{3.7391389365741305`*^9, 3.739138950526947*^9}, {
+  3.739138981464806*^9, 3.739138998617839*^9}, {3.74023158256989*^9, 
+  3.7402316020558624`*^9}},ExpressionUUID->"c52cf2eb-04a9-4a1d-8487-\
+9c736cc1bc1f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"connectInbox", "[", 
+   RowBox[{"server_String", ",", "username_String"}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mail", "=", 
+     RowBox[{"MailServerConnect", "[", 
+      RowBox[{
+       RowBox[{"\"\<imap.\>\"", "<>", "server"}], ",", "username"}], "]"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"inbox", "=", 
+     RowBox[{"mail", "[", "\"\<INBOX\>\"", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"sent", "=", 
+     RowBox[{"mail", "[", "\"\<[Gmail]/Sent Mail\>\"", "]"}]}], ";"}], 
+   ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"connectInbox", "[", 
+  RowBox[{"\"\<gmail.com\>\"", ",", "\"\<23wheels\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7401459573668184`*^9, 3.7401459583372593`*^9}, {
+  3.740147168893547*^9, 3.7401472334414625`*^9}, {3.7402598056412067`*^9, 
+  3.74025984346279*^9}, {3.740259992707717*^9, 3.7402600012985516`*^9}},
+ CellLabel->
+  "In[123]:=",ExpressionUUID->"7e6d6483-5ecc-4318-9f7e-0dc3332bdcc6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mailGet", "[", 
+   RowBox[{"howmany_Integer", "?", "Positive"}], "]"}], ":=", 
+  RowBox[{"inbox", "[", 
+   RowBox[{
+    RowBox[{"-", "howmany"}], ";;"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"emailStore", "=", 
+   RowBox[{"mailGet", "[", "40", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "can", " ", "be", " ", "any", " ", "number", " ", "of", " ", "emails", " ",
+     "to", " ", "store", " ", "here"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.7401470251232867`*^9, 3.740147052422906*^9}, {
+  3.740147129560376*^9, 3.740147152813095*^9}, {3.7401473046642165`*^9, 
+  3.7401473363858385`*^9}, {3.740147434573354*^9, 3.7401474910096674`*^9}},
+ CellLabel->
+  "In[125]:=",ExpressionUUID->"15b221ba-1947-40ed-81fe-d121062c9e21"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"summerizeSearch", "[", 
+   RowBox[{"outer_Integer", ",", "subject_String"}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{"MailSearch", "[", 
+    RowBox[{
+     RowBox[{"inbox", "[", 
+      RowBox[{
+       RowBox[{"-", "outer"}], ";;"}], "]"}], ",", 
+     RowBox[{"<|", 
+      RowBox[{"\"\<Subject\>\"", "\[Rule]", "subject"}], "|>"}]}], "]"}], 
+   ")"}]}]], "Input",
+ CellChangeTimes->{{3.740145967171618*^9, 3.7401459673831334`*^9}, {
+  3.740146803720451*^9, 3.740146806705514*^9}},
+ CellLabel->
+  "In[127]:=",ExpressionUUID->"1d2f3892-709c-4a80-8581-468e380f031d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"topSenders", "[", 
+    RowBox[{"howmanySenders_Integer", "?", "Positive"}], "]"}], ":=", 
+   RowBox[{"TakeLargest", "[", 
+    RowBox[{
+     RowBox[{"Counts", "@", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", "\"\<From\>\"", "]"}], "&"}], ",", "emailStore"}], 
+       "]"}]}], ",", "howmanySenders"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.740147388207014*^9, 3.740147427534851*^9}, {
+  3.7401488891661367`*^9, 3.7401489311403284`*^9}, {3.7401489695848083`*^9, 
+  3.740148977497493*^9}},
+ CellLabel->
+  "In[128]:=",ExpressionUUID->"1b241132-fde8-41f2-829c-65ca1fce7e06"],
+
+Cell[BoxData[
+ RowBox[{"Histogram", "[", 
+  RowBox[{"topSenders", "[", "10", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7402674676560593`*^9, 3.740267512612569*^9}},
+ CellLabel->
+  "In[144]:=",ExpressionUUID->"29b03208-e90c-49c5-9726-d295e68d8a24"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"mostCommon", "[", 
+   RowBox[{"number_Integer", "?", "Positive"}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"noList", "=", 
+     RowBox[{"WordList", "[", "\"\<Stopwords\>\"", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"WordCounts", "[", "\[IndentingNewLine]", 
+     RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"emailStore", "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "x"}], "]"}], "]"}], "[", "\"\<Body\>\"", "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "number"}], "}"}]}], "\[IndentingNewLine]", "]"}], 
+      "]"}], "]"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.7401490459352407`*^9, 3.7401490901895833`*^9}, {
+  3.7401494374478855`*^9, 3.7401494510831823`*^9}, {3.740149544653395*^9, 
+  3.7401496038063755`*^9}, {3.740149639337311*^9, 3.7401496889417105`*^9}, {
+  3.7401497234938707`*^9, 3.7401497679285164`*^9}, {3.740151305077681*^9, 
+  3.740151311774782*^9}, {3.7401515186823587`*^9, 3.7401515194188423`*^9}, {
+  3.7401517059522967`*^9, 3.7401517099186964`*^9}},
+ CellLabel->
+  "In[129]:=",ExpressionUUID->"f6846491-4788-4798-8ddc-8b4c014b5714"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"wordCloud", "[", 
+   RowBox[{"amount_Integer", "?", "Positive"}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{"WordCloud", "[", 
+    RowBox[{
+     RowBox[{"mostCommon", "[", "amount", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"WordSelectionFunction", "\[Rule]", "\[IndentingNewLine]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"StringLength", "[", "#", "]"}], "<", "10"}], ")"}], "&&", 
+         "\[IndentingNewLine]", 
+         RowBox[{"!", 
+          RowBox[{"(", 
+           RowBox[{"noList", "//", 
+            RowBox[{"MemberQ", "[", "#", "]"}]}], ")"}]}], "&&", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(", 
+          RowBox[{"!", 
+           RowBox[{"NumberQ", "[", "#", "]"}]}], ")"}]}], "&"}], ")"}]}]}], 
+    "\[IndentingNewLine]", "]"}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.7401515314822855`*^9, 3.7401515917401996`*^9}},
+ CellLabel->
+  "In[130]:=",ExpressionUUID->"c0f55825-05ac-449d-959c-08961fba2f37"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"emailWordCloud", "[", 
+   RowBox[{"number_Integer", "?", "Positive"}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"noList", "=", 
+     RowBox[{"WordList", "[", "\"\<Stopwords\>\"", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"WordCloud", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"WordCounts", "[", "\[IndentingNewLine]", 
+       RowBox[{"StringJoin", "[", "\[IndentingNewLine]", 
+        RowBox[{"Table", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"inbox", "[", 
+            RowBox[{"-", "x"}], "]"}], "[", "\"\<Body\>\"", "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "number"}], "}"}]}], "\[IndentingNewLine]", 
+         "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"WordSelectionFunction", "\[Rule]", "\[IndentingNewLine]", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"StringLength", "[", "#", "]"}], "<", "10"}], ")"}], "&&",
+           "\[IndentingNewLine]", 
+          RowBox[{"!", 
+           RowBox[{"(", 
+            RowBox[{"MemberQ", "[", 
+             RowBox[{"noList", ",", "#"}], "]"}], ")"}]}], "&&", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(", 
+           RowBox[{"!", 
+            RowBox[{"NumberQ", "[", "#", "]"}]}], ")"}]}], "&"}], ")"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.7402670995068035`*^9, 3.7402671309515743`*^9}, {
+  3.7402673200157223`*^9, 3.740267320718676*^9}},
+ CellLabel->
+  "In[142]:=",ExpressionUUID->"799417cc-a7b7-40ca-b47d-f4514c8869bb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"emailWordCloud", "[", "25", "]"}]], "Input",
+ CellChangeTimes->{{3.7402673310132804`*^9, 3.740267336730671*^9}},
+ CellLabel->
+  "In[141]:=",ExpressionUUID->"4078d641-e791-4434-87b1-f514e013bc09"],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    StyleBox["\<\"Facebook\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.19830028328611898`],
+     FontColor->RGBColor[0.368417, 0.506779, 0.709798]], {0, 0}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Strava\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.19830028328611898`],
+     FontColor->RGBColor[0.880722, 0.611041, 0.142051]], {0., -53.5}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"message\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.09280062518315914],
+     FontColor->RGBColor[0.647624, 0.37816, 0.614037]], {0., 41.5}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"Andrew\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12210608576731466`],
+     FontColor->RGBColor[0.772079, 0.431554, 0.102387]], {0., 64.5}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"By\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.1748559148187946],
+     FontColor->RGBColor[0.560181, 0.691569, 0.194885]], {0., -103.5}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"running\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.09866171729999025],
+     FontColor->RGBColor[1, 0.75, 0]], {0., 95.5}, Center, Automatic], 
+   InsetBox[
+    StyleBox["\<\"email\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.13968936211780797`],
+     FontColor->RGBColor[0.922526, 0.385626, 0.209179]], {17., 120.5}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"New\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.13968936211780797`],
+     FontColor->RGBColor[0.528488, 0.470624, 0.701351]], {-81., -91.5}, 
+    Center, Automatic], InsetBox[
+    StyleBox["\<\"View\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.12210608576731466`],
+     FontColor->RGBColor[0.363898, 0.618501, 0.782349]], {81., -97.5}, Center,
+     Automatic], InsetBox[
+    StyleBox["\<\"please\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08107844094949693],
+     FontColor->RGBColor[
+      0.838355547812947, 0.44746667828057946`, 0.0208888695323676]], {108., 40.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"SHOP\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08693953306632803],
+     FontColor->RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85]], {-110., 68.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Follow\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08107844094949693],
+     FontColor->RGBColor[0.736782672705901, 0.358, 0.5030266573755369]], {-108., 40.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Challenge\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.16397784358994957`, 0.7038177251280403, 0.6117734123079395]], {97., 82.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"account\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06935625671583472],
+     FontColor->RGBColor[0.8996399512215667, 0.7463488834690629, 0.]], {-101., 91.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Support\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.05763407248217251],
+     FontColor->RGBColor[
+      0.9874666782805795, 0.6948333914028977, 0.033839968642435214`]], {107., 61.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"NOW\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08107844094949693],
+     FontColor->RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965]], {-77., 114.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Twitter\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06935625671583472],
+     FontColor->RGBColor[
+      0.28240003484173815`, 0.6090799721266095, 0.7538800418100857]], {-69., -121.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Privacy\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.9637822400302223, 0.5764112001511111, 0.0977879519184]], {59., -121.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Alpha\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06349516459900362],
+     FontColor->RGBColor[
+      0.9324333565611593, 0.5282889043741062, 0.0921900209050434]], {-125., -34.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Instagram\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.6361597700445392, 0.7170733077827265, 0.]], {107., 97.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"emails\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06349516459900362],
+     FontColor->RGBColor[
+      0.6753413537738198, 0.3589675436319385, 0.5991466155654507]], {-24., -136.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"2018\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06935625671583472],
+     FontColor->RGBColor[
+      0.5833680111493557, 0.4126186601628758, 0.8290799721266107]], {124., -36.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Team\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06349516459900362],
+     FontColor->RGBColor[
+      0.8857244243136628, 0.3764133635295058, 0.1393110607841571]], {126., -55.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Inc\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08693953306632803],
+     FontColor->RGBColor[0.915, 0.3325, 0.2125]], {-121., -56.5}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"sent\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06935625671583472],
+     FontColor->RGBColor[
+      0.8439466852489265, 0.3467106629502147, 0.3309221912517893]], {123., -75.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"CA\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08107844094949693],
+     FontColor->RGBColor[
+      0.9728288904374106, 0.621644452187053, 0.07336199581899142]], {93., 115.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Python\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.7513196300394465, 0.358, 0.48066210763162087`]], {48., -137.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Policy\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.9784200278733908, 0.649600139366954, 0.058265924741844846`]], {-56., 136.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Attention\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.5472001045252132, 0.43417993728487203`, 0.85]], {0., 138.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"York\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06349516459900362],
+     FontColor->RGBColor[0.47401116530937026`, 0.47809330081437784`, 0.85]], {93., 136.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Wheeler\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.8607200975568693, 0.34335598048862614`, 0.30296650407188447`]], {-86., -138.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Project\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.8781534541180211, 0.4921023027453475, 0.04333810870621905]], {113., -120.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Snapchat\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.7989994773739094, 0.735166608597101, 0.]], {21., -29.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"July\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[0.7678998606330495, 0.7317110956258943, 0.]], {99., -135.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"help\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.6184987019729621, 0.39212575718243875`, 0.7412532450675947]], {-131., 110.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Francisco\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.8745421494417032, 0.39318677583744527`, 0.11135537360425793`]], {-109., 132.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"rights\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.2187618985811806, 0.715, 0.5074848563512248]], {-119., -120.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Community\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.028328611898016998`],
+     FontColor->RGBColor[0.6672593867853922, 0.7205288207539324, 0.]], {-24., 20.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Times\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[0.7132613816472081, 0.358, 0.5392132590042952]], {34., 150.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"you\[CloseCurlyQuote]re\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.969373377466199, 0.6043668873309952, 0.08269188084126262]], {134., 110.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Top\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[0.37977756485605163`, 0.715, 0.3025558265468435]], {-144., -73.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"kudos\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.8878600487784333, 0.33792799024431336`, 0.2577332520359445]], {-102., 146.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"future\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.8613800418100862, 0.48092002787339083`, 0.02824203762907758]], {140., 130.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"sometimes\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.8774935098648088, 0.34000129802703827`, 0.2750108168919853]], {0., -151.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Run\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.06349516459900362],
+     FontColor->RGBColor[0.5407932311309059, 0.715, 0.09762679674248334]], {135., -137.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"friends\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.23716678280579248`, 0.645266573755366, 0.699600139366951]], {-51., 150.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Boston\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.9810598048862722, 0.7553955338762525, 0.]], {-140., -143.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"reserved\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[0.7175796237092107, 0.7261199581899123, 0.]], {70., -150.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Citizen\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.8168067340273636, 0.3521386531945273, 0.3761554432877274]], {133., 149.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"mobile\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.428777913273419, 0.5052332520359486, 0.85]], {-56., -153.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Share\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.596786740995709, 0.404791067752503, 0.7955331475107271]], {81., 153.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Guide\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.9052934053395919, 0.510195603559728, 0.06776406480563275]], {-149., -93.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"ACTIVITY\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.5750747800184488, 0.4174563783225715, 0.8498130499538777]], {-98., 160.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Potrero\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.19193353076984873`, 0.681453175384121, 0.6453202369238185]], {-19., 161.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"receive\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.6319174318193065, 0.38429816477207124`, 0.7077064204517338]], {72., -30.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"summer\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.7042770479220728, 0.358, 0.5530353108891188]], {-77., 21.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"received\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.8510135028964549, 0.47400900193096995`, 0.018912152606809424`]], {151., -96.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Feaster\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.26512246998569167`, 0.6229020240114467, 0.73314696398283]], {152., 20.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"If\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.08693953306632803],
+     FontColor->RGBColor[0.571589, 0.586483, 0.]], {158., -2.5}, Center, 
+    Automatic], InsetBox[
+    StyleBox["\<\"work\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.3103557220216354, 0.5867154223826917, 0.7874268664259625]], {156., 73.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Street\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[0.38354466123747527`, 0.5323732032575149, 0.85]], {-100., -158.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"94103\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[0.6897400905885174, 0.358, 0.5753998606330502]], {-154., -108.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"College\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.028328611898016998`],
+     FontColor->RGBColor[
+      0.6453361616656581, 0.37647057236169945`, 0.6741595958358548]], {97., 21.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"women\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.9986489531525362, 0.7507447657626809, 0.0036478264881522893`]], {0., -161.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"runners\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.6102054708420535, 0.39696347534213544`, 0.7619863228948663]], {43., -161.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"MILLER\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.4567336004533182, 0.4884598397280091, 0.85]], {120., -153.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Night\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.7658565873730018, 0.358, 0.4582975578876895]], {-157., -49.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"8:58/mi\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.845266573755366, 0.437100139366951, 0.03816643438841502]], {120., 162.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"7:53/mi\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.31827505306025683`, 0.715, 0.3808317506505822]], {154., -108.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"time\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[0.8493197142977551, 0.7407577460330839, 0.]], {158., 87.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"heat\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.6536293927965667, 0.37163285420200276`, 0.6534265180085832]], {158., 53.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Details\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.8335801463353031, 0.3487839707329394, 0.3481997561078282]], {-147., 144.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Bring\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.9307395679624266, 0.7498043964402695, 0.]], {-159., 89.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"make\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.9930578157165594, 0.7227890785827968, 0.01874389756528967]], {154., -121.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"like\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.35558897405758294`, 0.5505288207539337, 0.8417067688690995]], {-124., -9.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"San\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.8342400905885153, 0.4628267270590103, 0.0038160815296638794`]], {-153., -123.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Way\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.529922539669161, 0.44454647619850335`, 0.85]], {162., -30.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"3.2\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[0.7748409210981391, 0.358, 0.4444755060028629]], {160., -72.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"stop\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.9603267270590103, 0.5591336352950514, 0.10711783694067224`]], {-162., 0.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"link\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.04591188824851031],
+     FontColor->RGBColor[
+      0.9038177251280404, 0.3492734123079395, 0.18454431282010084`]], {-162., 102.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"just\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.5788038738141875, 0.715, 0.049249615145579635`]], {-162., 12.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"How\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[0.5019668524892619, 0.46131988850644284`, 0.85]], {-23., -30.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Five\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[0.47929071933511125`, 0.715, 0.1759027208462221]], {40., 161.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"said\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.9046334610863751, 0.334573307782725, 0.22977756485604156`]], {-154., 124.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"want\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.8633598745697435, 0.40996018814538476`, 0.08339968642435877]], {-134., -157.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"2017\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.7277983389807635, 0.358, 0.5168487092603637]], {-139., 156.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Park\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.15725938678540247`, 0.715, 0.5857607804549424]], {155., -152.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"94025\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.028328611898016998`],
+     FontColor->RGBColor[
+      0.8064401951137368, 0.3542119609772526, 0.39343300814377197`]], {158., 158.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Trail\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[0.4177882075393331, 0.715, 0.25417864494993975`]], {-161., -157.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"201\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.9492067688690977, 0.5394711792460651, 0.10728609198218791`]], {-160., -14.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Nice\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.9840111653093676, 0.677555826546838, 0.04316985366470745]], {-163., 24.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"JEN\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.6670481226429111, 0.3638052617916352, 0.6198796933927223]], {-164., -27.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Star\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.3383114092015346, 0.5643508726387724, 0.8209736910418415]], {163., 32.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"\[Copyright]\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.051772980365341406`],
+     FontColor->RGBColor[
+      0.8564488486273256, 0.42032672705901153`, 0.06612212156831418]], {-159., 38.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"PM\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0400507961316792],
+     FontColor->RGBColor[
+      0.7896667828057927, 0.3575666434388414, 0.4213886953236787]], {165., -45.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"app\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.028328611898016998`],
+     FontColor->RGBColor[
+      0.2198892179497479, 0.6590886256402017, 0.6788670615396974]], {17., -81.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"live\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.8926354502560807, 0.366046824615879, 0.15658862564020168`]], {15., 164.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"data\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.028328611898016998`],
+     FontColor->RGBColor[
+      0.9107287510704583, 0.33890687339431275`, 0.20182187767614543`]], {-119., 12.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Ave\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.028328611898016998`],
+     FontColor->RGBColor[
+      0.8949268664259606, 0.5032845776173072, 0.05843417978336459]], {-160., 52.5},
+     Center, Automatic], InsetBox[
+    StyleBox["\<\"Hi\"\>",
+     StripOnInput->False,
+     FontSize->Scaled[0.0341897040148481],
+     FontColor->RGBColor[
+      0.922066817647527, 0.5213778784316846, 0.08286013588277422]], {59., -3.5},
+     Center, Automatic]},
+  DefaultBaseStyle->{"Graphics", FontFamily -> "Helvetica"},
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> Automatic},
+  PlotRange->{{-177.5, 175.5}, {-168., 171.}}]], "Output",
+ CellChangeTimes->{3.7402673521083517`*^9},
+ CellLabel->
+  "Out[141]=",ExpressionUUID->"4a83c03d-596e-471f-a0c1-6f14e9e43a1d"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"emailsFromInbox", "=", 
+   RowBox[{"inbox", "[", 
+    RowBox[{
+     RowBox[{"-", "100"}], ";;", 
+     RowBox[{"-", "1"}]}], "]"}]}], ";"}]], "Input",
+ CellLabel->
+  "In[131]:=",ExpressionUUID->"f0e5bbdc-e935-4df5-839d-169ffc0da3e8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"edges", "=", 
+   RowBox[{"Flatten", "@", 
+    RowBox[{"Map", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Function", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", "message", "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"fromList", "=", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"StringQ", "@", 
+             RowBox[{"message", "[", "\"\<FromAddress\>\"", "]"}]}], ",", 
+            RowBox[{"message", "[", "\"\<FromAddress\>\"", "]"}], ",", 
+            "\"\<weird\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"toList", "=", 
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"message", "[", "\"\<ToAddressList\>\"", "]"}], ",", 
+            "StringQ"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"ccList", "=", 
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"message", "[", "\"\<ToAddressList\>\"", "]"}], ",", 
+            "StringQ"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"fromList", "===", "\"\<weird\>\""}], ",", 
+           "\[IndentingNewLine]", "Nothing", ",", "\[IndentingNewLine]", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{"(*", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"DirectedEdge", "[", 
+                 RowBox[{"fromList", ",", "#"}], "]"}], "&"}], "/@", 
+               "toList"}], ","}], "*)"}], "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"DirectedEdge", "[", 
+                RowBox[{"fromList", ",", "#"}], "]"}], "&"}], "/@", 
+              "ccList"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Flatten", "@", 
+              RowBox[{"Outer", "[", 
+               RowBox[{"UndirectedEdge", ",", "toList", ",", "ccList"}], 
+               "]"}]}]}], "\[IndentingNewLine]", "}"}]}], 
+          "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], ",",
+       "\[IndentingNewLine]", "emailsFromInbox"}], "\[IndentingNewLine]", 
+     "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7401524279932313`*^9, 3.7401524548497715`*^9}, {
+   3.740155958119218*^9, 3.740156009040053*^9}, {3.7401560473833895`*^9, 
+   3.740156048570611*^9}, {3.7402607578339553`*^9, 3.7402607590700865`*^9}, {
+   3.7402608169702716`*^9, 3.7402608604363375`*^9}, {3.7402609967305527`*^9, 
+   3.740261001984647*^9}, 3.7402610419208765`*^9, {3.7402623203727674`*^9, 
+   3.740262335620678*^9}, 3.7402624148530893`*^9, {3.7402685997679257`*^9, 
+   3.7402686285886946`*^9}, {3.7402686905522413`*^9, 3.740268693426572*^9}},
+ CellLabel->
+  "In[176]:=",ExpressionUUID->"bd2cefb2-c225-4f44-93fd-1e2558cf625d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{"edges", ",", 
+   RowBox[{"VertexLabels", "\[Rule]", "\"\<Name\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7401562468760896`*^9, 3.740156250828249*^9}, {
+  3.7401562879130096`*^9, 3.740156298054104*^9}},
+ CellLabel->
+  "In[177]:=",ExpressionUUID->"c4af6cdb-c2bf-481a-9390-091d31f79631"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{
+      "customerupdate@email.roots.com", "23wheels@gmail.com", 
+       "email@driveincontrol.org", "colleen.wheeler@gmail.com", 
+       "no-reply@strava.com", "notification+kr4kaqnswmgx@facebookmail.com", 
+       "nytimes@email.newyorktimes.com", "harvardx-news@harvard.edu", 
+       "dkiel@crescentridge.com", "axwheele@hamilton.edu", "info@e.hyatt.com",
+        "23WHEELS@GMAIL.COM", "info@meetup.com", "news@ridemaple.com", 
+       "no-reply@accounts.google.com", "hello@spotify.com", 
+       "noreply@google.com", "team@datacamp.com", 
+       "donotreply@edfinancial.com", "pandora@pandora.com", 
+       "no-reply@cloudimperiumgames.com", "newsletter@news.strava.com", 
+       "nytdirect@nytimes.com", "wheelerk84@gmail.com", "megwhe@gmail.com", 
+       "c_wheeler2003@yahoo.com"}, {{{1, 2}, {3, 2}, {4, 2}, {5, 2}, {6, 2}, {
+       7, 2}, {8, 2}, {9, 2}, {4, 10}, {4, 2}, {4, 10}, {4, 2}, {5, 2}, {5, 
+       2}, {5, 2}, {11, 12}, {5, 2}, {13, 2}, {6, 2}, {14, 2}, {15, 2}, {1, 
+       2}, {16, 2}, {6, 2}, {15, 2}, {15, 2}, {17, 2}, {18, 2}, {5, 2}, {19, 
+       2}, {6, 2}, {5, 2}, {6, 2}, {7, 2}, {20, 2}, {21, 2}, {22, 2}, {23, 
+       2}, {1, 2}, {10, 2}, {10, 2}, {6, 2}, {5, 2}, {24, 4}, {24, 2}, {24, 
+       25}, {6, 2}, {5, 2}, {5, 2}, {5, 2}, {7, 2}, {6, 2}, {26, 2}, {13, 
+       2}}, {{2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {
+       10, 10}, {10, 2}, {2, 10}, {2, 2}, {10, 10}, {10, 2}, {2, 10}, {2, 
+       2}, {2, 2}, {2, 2}, {2, 2}, {12, 12}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {
+       2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 
+       2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2,
+        2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {4, 4}, {4, 2}, {4, 25}, {
+       2, 4}, {2, 2}, {2, 25}, {25, 4}, {25, 2}, {25, 25}, {2, 2}, {2, 2}, {2,
+        2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}, {2, 2}}}, {
+      VertexLabels -> {"Name"}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[0.04017915559385355], 
+        ArrowBox[BezierCurveBox[{{2.797798254750414, -1.3264111592574797`}, {
+         2.255283419365474, -1.6738608449827428`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{2.797798254750414, -1.3264111592574797`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{2.797798254750414, -1.3264111592574797`}, {
+         2.154955728240336, -1.2840187444467484`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.0975588880939218`, -1.5147648470557542`}, {
+          2.098254998978682, -1.5150654594199542`}, {
+          2.098621055531494, -1.5154172063415778`}, {
+          2.098962931335741, -1.516858905239641}, {
+          2.0987937924716364`, -1.5173375651830014`}, {
+          2.0983067822892663`, -1.517918735760078}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.098581659647419, -1.5191013955076158`}, {
+          2.099275058439218, -1.5194082118580987`}, {
+          2.0996379594484837`, -1.519763213483732}, {
+          2.0999669478697713`, -1.5212079077063496`}, {
+          2.0997935415212177`, -1.5216850382283347`}, {
+          2.099301361151767, -1.5222618368425138`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.0995656669066176`, -1.5234469039749678`}, {
+          2.100256298314649, -1.5237598998465578`}, {
+          2.1006160148430673`, -1.524118127868788}, {
+          2.100932089648245, -1.525565702217738}, {
+          2.1007544296424614`, -1.5260412652725197`}, {
+          2.1002571183318146`, -1.5266136459305566`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.100510831407932, -1.527801025952065}, {
+          2.101198640362058, -1.5281201763868384`}, {
+          2.1015551437262556`, -1.5284816022409833`}, {
+          2.101858279711889, -1.5299319412883856`}, {
+          2.1016763802152756`, -1.5304058989551241`}, {
+          2.1011739776184535`, -1.5309738160160566`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.101417077785056, -1.5321634142463294`}, {
+          2.102102009440197, -1.5324886937956053`}, {
+          2.102455271213014, -1.532853288661991}, {
+          2.102745444207395, -1.534306276759512}, {
+          2.1025593197244046`, -1.534778591245379}, {
+          2.102051865902401, -1.5353419994241673`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1022843337749646`, -1.5365337210060377`}, {
+          2.1029663335154747`, -1.5368651037324064`}, {
+          2.1033163255282314`, -1.5372328385386664`}, {
+          2.103593512393307, -1.53868835982674}, {
+          2.1034031777652866`, -1.5391589934699328`}, {
+          2.1028907131818735`, -1.5397178478410694`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1031125302236844`, -1.540911597748057}, {
+          2.1037915436677044`, -1.5412490572274489`}, {
+          2.1041382380124487`, -1.541619902650841}, {
+          2.1044024166456627`, -1.5430778410679078`}, {
+          2.104207887049673, -1.5435467563406517`}, {
+          2.1036904525681748`, -1.5441010123417453`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1039016010918017`, -1.545296695385633}, {
+          2.1045775740955968`, -1.5456402047094249`}, {
+          2.1049209431273277`, -1.5460141311791706`}, {
+          2.1051720924633863`, -1.5474743704709317`}, {
+          2.104973383410989, -1.5479415299824735`}, {
+          2.1044510202910236`, -1.5484911434178006`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1046514834597314`, -1.5496886642562255`}, {
+          2.105324362122007, -1.550038196033387}, {
+          2.1056643784608817`, -1.5504151737330283`}, {
+          2.1059024784734315`, -1.5518775974617163`}, {
+          2.105699605809453, -1.552342963961304}, {
+          2.1051723557036435`, -1.5528878910053345`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1053621175327333`, -1.5540871541493901`}, {
+          2.106031848198935, -1.5544426805086677`}, {
+          2.106368484732449, -1.554822679378445}, {
+          2.106593516435674, -1.5562871709321078`}, {
+          2.1063864963369423`, -1.5567507073119633`}, {
+          2.1058544012875937`, -1.5572909045128538`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1060334466456814`, -1.5584918143347046`}, {
+          2.106699975912271, -1.5588533069268435`}, {
+          2.1070332057974226`, -1.5592362966660929`}, {
+          2.107245151247559, -1.5607027392678923`}, {
+          2.1070340002216144`, -1.5611644085661684`}, {
+          2.1064971026573605`, -1.5616998328492282`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1066654172675787`, -1.5629022935897339`}, {
+          2.107328691986295, -1.5632697235897388`}, {
+          2.107658488651724, -1.5636556736593077`}, {
+          2.1078573309484905`, -1.5651239503768315`}, {
+          2.1076420658322674`, -1.5655837157805603`}, {
+          2.1071004085646905`, -1.5661143244516853`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.10725797900583, -1.5673182402280377`}, {
+          2.107917946287925, -1.5676915783374719`}, {
+          2.1082442834360324`, -1.5680804579621548`}, {
+          2.1084300067239776`, -1.5695504517167402`}, {
+          2.108210644682464, -1.5700082765647678`}, {
+          2.1076642709026796`, -1.5705340273138453`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.107811084610257, -1.5717393021272126`}, {
+          2.108467691830714, -1.572118518576533}, {
+          2.1087905434397585`, -1.5725102967475248`}, {
+          2.1089631329095253`, -1.5739818903235951`}, {
+          2.108739691434393, -1.5744377381095056`}, {
+          2.1081886447096045`, -1.5749585890137874`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1083246899768686`, -1.5761651267569705`}, {
+          2.1089778847785987`, -1.5765501913079027`}, {
+          2.109297225104772, -1.5769448367852719`}, {
+          2.1094566669942783`, -1.578417912839682}, {
+          2.1092291639024885`, -1.5788717472147074`}, {
+          2.1086734881725153`, -1.5793876567421539`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1087987541513753`, -1.5805953612072492`}, {
+          2.1094484844493913`, -1.5809862431551975`}, {
+          2.1097642880288703`, -1.5813837244703768`}, {
+          2.109910569624407, -1.5828581655417706`}, {
+          2.1096790230567892`, -1.5833099503176906`}, {
+          2.109118762630562, -1.5838208773302813`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1092332393324558`, -1.5850296522163516`}, {
+          2.109879453318026, -1.5854263203928483`}, {
+          2.1101916949690036`, -1.585826605851144}, {
+          2.110324804606248, -1.587302294369321}, {
+          2.1100892330260543`, -1.5877519935213473`}, {
+          2.1095244325780818`, -1.588257897278362}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.109628110874772, -1.5894676461991162`}, {
+          2.110270757019551, -1.5898700689743062`}, {
+          2.110579411844245, -1.5902731266574257`}, {
+          2.110699338909191, -1.5917499449527144`}, {
+          2.1104597611006217`, -1.5921975226223648`}, {
+          2.109890465667429, -1.5926983627836313`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1099833372917294`, -1.5939089892751102`}, {
+          2.110622364351869, -1.5943171345602738`}, {
+          2.1109274077385054`, -1.5947229323288703`}, {
+          2.1110341426683092`, -1.5962007626415131`}, {
+          2.1107905777350187`, -1.5966461831394692`}, {
+          2.1102168327115556`, -1.597141919768581}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.110298890257992, -1.5983533272968484`}, {
+          2.1109342472782235`, -1.5987671625469593`}, {
+          2.1112356549030005`, -1.599175668043195}, {
+          2.1113291891867445`, -1.6006543925327368`}, {
+          2.111081656550314, -1.6010976203416907`}, {
+          2.1105035076863357`, -1.6015882139091906`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1105747446117356`, -1.602800305878032}, {
+          2.1112063809294357`, -1.6032197980943532`}, {
+          2.111504128758463, -1.603630978744479}, {
+          2.111584454937833, -1.605110479499164}, {
+          2.1113329743362246`, -1.6055514792766505`}, {
+          2.110750467732643, -1.606036890663183}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.110810878356658, -1.607249570421807}, {
+          2.1114387436058877`, -1.6076746861545212`}, {
+          2.111732807897103, -1.6080885091714747`}, {
+          2.111799919566984, -1.609568668217649}, {
+          2.111544511052966, -1.6100074047988635`}, {
+          2.110957693158174, -1.610487595298294}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.111007272663731, -1.6117007661490397`}, {
+          2.1116313167792526`, -1.6121314714999173`}, {
+          2.1119216740843143`, -1.6125479038859367`}, {
+          2.1119755658933, -1.6140286031974547`}, {
+          2.1117162498328477`, -1.6144650415980566`}, {
+          2.1111251674390155`, -1.6149399729205585`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1111639118727035`, -1.616153538126606}, {
+          2.111784085093971, -1.6165897987517075`}, {
+          2.1120707122601283`, -1.6170088073009627`}, {
+          2.1121113799109494`, -1.618489928808599}, {
+          2.1118481769816206`, -1.6189240342275026`}, {
+          2.1112528772209656`, -1.6193936685026094`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1112807834933482`, -1.6206075312956927`}, {
+          2.111897036368477, -1.6210493124081082`}, {
+          2.112179910540416, -1.6214708637093493`}, {
+          2.1122073507902814`, -1.6229522893102126`}, {
+          2.1119402819795696`, -1.6233840271323612`}, {
+          2.1113408123205955`, -1.6238483269119868`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.11135787820646, -1.6250623905001116`}, {
+          2.111970161596169, -1.6255096568727334`}, {
+          2.112249260217835, -1.6259337173119546`}, {
+          2.1122634708786916`, -1.6274153288789057`}, {
+          2.1119925574823504`, -1.6278446646780318`}, {
+          2.111388965726064, -1.6283035929394567`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.111395189864597, -1.629517760514617}, {
+          2.1120034549461266`, -1.629970476482949}, {
+          2.1122787557625236`, -1.6303970122460683`}, {
+          2.1122797357012297`, -1.6318786916371397`}, {
+          2.1120049993215746`, -1.6323055911785105`}, {
+          2.1113973335976746`, -1.6327591113273339`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.11139271549257, -1.6339732860732314`}, {
+          2.111996913763577, -1.6344314155382342`}, {
+          2.1122683948225403`, -1.6348603926137901`}, {
+          2.1122561439609573`, -1.6363420216816058`}, {
+          2.111977606505145, -1.6367664509247528`}, {
+          2.1113659152681836`, -1.6372145267978098`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.111350455287684, -1.6384286118975757`}, {
+          2.111950538570107, -1.6388921183285428`}, {
+          2.112218178224056, -1.639323502510407}, {
+          2.112192697539052, -1.6408049631116035`}, {
+          2.1119103812173337`, -1.641226888213037}, {
+          2.1112947132428515`, -1.6416694840812833`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1112684126197174`, -1.642883382725196}, {
+          2.1118643330636195`, -1.6433522291626688`}, {
+          2.112128109971282, -1.6437859860527726`}, {
+          2.1120894014946585`, -1.64526716005742}, {
+          2.111803328818605, -1.6456865473733275`}, {
+          2.1111837331992445`, -1.646123627944688}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1111465940306564`, -1.6473372433378943`}, {
+          2.111738304118041, -1.6478113923966078`}, {
+          2.1119981972461557`, -1.648247487407686}, {
+          2.11194626406448, -1.6497282567087073`}, {
+          2.1116564578451915`, -1.6501450727976361`}, {
+          2.1110329839867803`, -1.650576603219819}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1109850092341724`, -1.6517898385900511`}, {
+          2.1115724617827714`, -1.6522692524619158`}, {
+          2.1118284504077653`, -1.6527076508202636`}, {
+          2.1117632966621294`, -1.6541878973428523`}, {
+          2.111469780008413, -1.6546021089683767`}, {
+          2.110842477626025, -1.6550280548316525`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1107836711148473`, -1.6562408134369462`}, {
+          2.1113668192818835`, -1.6567254538940626`}, {
+          2.1116188829915243`, -1.6571661206423096`}, {
+          2.1115405138772108`, -1.6586457263533447`}, {
+          2.111243310193741, -1.659057300486716}, {
+          2.1106122293077316`, -1.6594776278266612`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.110542595727147, -1.6606898129630678`}, {
+          2.11112139301307, -1.6611796413607742`}, {
+          2.111369511708093, -1.6616225413606711`}, {
+          2.111277933474163, -1.6631013882781294`}, {
+          2.110977066459612, -1.6635102921009088`}, {
+          2.1103422573916313`, -1.6639249674011147`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.11026180229414, -1.6651364824104142`}, {
+          2.110836202546333, -1.6656314596903694`}, {
+          2.1110803564420446`, -1.6660765576255896`}, {
+          2.1109755763908398`, -1.6675545278279535`}, {
+          2.1106710700359907`, -1.66796072873463}, {
+          2.1100325834049682`, -1.6683697189293747`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1099413132059643`, -1.6695804672067818`}, {
+          2.1105112706224256`, -1.670080553900078}, {
+          2.110751440250281, -1.6705278142790347`}, {
+          2.110633466736839, -1.6720047899146941`}, {
+          2.110325345322671, -1.6724082555152844`}, {
+          2.109683232040782, -1.6728115279921696`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1095811540180445`, -1.6740214129940372`}, {
+          2.1101466231510386`, -1.6745265692243485`}, {
+          2.110382789360193, -1.6749759563830235`}, {
+          2.110251631791584, -1.676451819679675}, {
+          2.1099399198873368`, -1.676852517802305}, {
+          2.109294231155941, -1.6772500404048567`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.109181353449051, -1.6784589656563746`}, {
+          2.1097422892087327`, -1.6789691511431357`}, {
+          2.10997443316757, -1.6794206292479248`}, {
+          2.1098301020021437`, -1.6808952625219602`}, {
+          2.1095148244633597`, -1.681293161215432}, {
+          2.108865611768918, -1.6816849022456644`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1087419433786123`, -1.682892771348552}, {
+          2.1092983010366226`, -1.683407945410171}, {
+          2.109526404234256, -1.6838614784607393`}, {
+          2.1093689109808107`, -1.685334764126632}, {
+          2.10905009294735, -1.6857298316629712`}, {
+          2.108397408057322, -1.686115759883914}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1082629588447728`, -1.6873224765241055`}, {
+          2.1088146940378043`, -1.6878425980812073`}, {
+          2.109038738285552, -1.688298149913362}, {
+          2.108868095502415, -1.6897699704930418`}, {
+          2.1085457623964543`, -1.690162175370026}, {
+          2.107889657355166, -1.690542260008216}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1077444380411956`, -1.691747727963543}, {
+          2.1082915067745316`, -1.6922727555422448`}, {
+          2.108511474207369, -1.6927302898308172`}, {
+          2.108327695501395, -1.694200527963038}, {
+          2.1080018730253975`, -1.6945898389067109`}, {
+          2.107342400149896, -1.6949640496546448`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1071864223141223`, -1.696168172802507}, {
+          2.1077287809651444`, -1.696698064537726}, {
+          2.1079446540431257`, -1.697157544799469}, {
+          2.1077477540686136`, -1.6986260832491673`}, {
+          2.1074184682032815`, -1.6990124692163306`}, {
+          2.1067556800791594`, -1.6993807762348827`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.106588956159072, -1.700583458559913}, {
+          2.1071265614807366`, -1.7011181721987039`}, {
+          2.1073383229903966`, -1.7015795617952003`}, {
+          2.1071283174479194`, -1.7030462834628437`}, {
+          2.1067955944501207`, -1.7034297136435341`}, {
+          2.106129543927326, -1.7037920875643346`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.105952087217294, -1.7049932331660562`}, {
+          2.106484896341585, -1.7055327260709807`}, {
+          2.106692529397309, -1.7059959882115656`}, {
+          2.1064694350324618`, -1.7074607761424891`}, {
+          2.1061333014331383`, -1.707841219962434}, {
+          2.1054640416217576`, -1.708197631890212}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.105275866271971, -1.7093971449906835`}, {
+          2.1058038367133136`, -1.7099413741432106`}, {
+          2.1060073247586852`, -1.7104064718879044`}, {
+          2.105771159360751, -1.7118692092816372`}, {
+          2.1054316419628014`, -1.7122466364046927`}, {
+          2.104759226228827, -1.712597057919579}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.104560347244168, -1.713794842871034}, {
+          2.105083436902818, -1.7143437648749693`}, {
+          2.10528276371194, -1.7148106611374239`}, {
+          2.1050335461124705`, -1.7162712313570025`}, {
+          2.1046906719886134`, -1.7166456116875728`}, {
+          2.1040151539496867`, -1.7169900148473671`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.1038055871885324`, -1.7181859761398381`}, {
+          2.1043237543539353`, -1.7187395472247857`}, {
+          2.1045189040327204`, -1.7192082047752406`}, {
+          2.1042566541040353`, -1.7206664913565102`}, {
+          2.1039104505946513`, -1.7210377950419466`}, {
+          2.103231884115788, -1.7213761523843452`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.103011646288745, -1.7225701946532828`}, {
+          2.1035248496428585`, -1.7231283706781337`}, {
+          2.1037158066303014`, -1.723598752146386}, {
+          2.1034405452839016`, -1.7250546388072852`}, {
+          2.1030910399948524`, -1.725422836240268}, {
+          2.1024094791841477`, -1.725755120785053}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.102178587852722, -1.7269471488189276`}, {
+          2.102686786473313, -1.7275098852753807`}, {
+          2.1028735355427273`, -1.727981953153764}, {
+          2.1025852847276294`, -1.7294353238035987`}, {
+          2.1022325055280566`, -1.7298003856244966`}, {
+          2.10154800473237, -1.7301265708756888`}, {
+          1.6124408928553973`, -1.631468430170436}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          1.8991702539274788`, -2.0083650582637165`}, {
+          1.9062154175771215`, -2.4818786910499853`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          1.8294260695334372`, -2.0324582113787253`}, {
+          1.9062154175771215`, -2.4818786910499853`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.0783365708002015`, -2.0176717069030587`}, {
+          2.2240486721196446`, -2.6050214640447185`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          2.014506441403323, -2.057771221079045}, {
+          2.2240486721196446`, -2.6050214640447185`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          1.9503675361324542`, -2.0980647151680554`}, {
+          2.2240486721196446`, -2.6050214640447185`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          1.8861220288425866`, -2.138425179019422}, {
+          2.2240486721196446`, -2.6050214640447185`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          1.7040723618670233`, -2.042229193812997}, {
+          1.5340045196933105`, -2.4271936858271497`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{1.6124408928553973`, -1.631468430170436}, {
+          1.4423730506816856`, -2.0164329221864614`}, {
+          1.5340045196933105`, -2.4271936858271497`}}], 0.03746249901305451]},
+         ArrowBox[{{0.5126861607747801, -2.1726275394870673`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{
+          1.9062154175771215`, -2.4818786910499853`}, {
+          1.9219344460433598`, -2.1687520436571903`}, {
+          2.0373899856604942`, -2.0788583059951296`}, {
+          2.135511715419059, -2.0692198315018073`}, {
+          2.327078183456055, -2.2680127076296315`}, {
+          2.3138146604227883`, -2.3657104711563224`}, {
+          2.2197093086927926`, -2.477759783849051}, {
+          1.9062154175771215`, -2.4818786910499853`}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{
+          1.9062154175771215`, -2.4818786910499853`}, {
+          1.7111175255166662`, -2.515742826595227}, {
+          1.5340045196933105`, -2.4271936858271497`}}], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{
+          1.9062154175771215`, -2.4818786910499853`}, {
+          1.7291024117537666`, -2.3933295502694447`}, {
+          1.5340045196933105`, -2.4271936858271497`}}], 0.03746249901305451]},
+         ArrowBox[BezierCurveBox[{{
+         1.9062154175771215`, -2.4818786910499853`}, {
+         1.6194860565050397`, -2.104982062962828}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         1.9062154175771215`, -2.4818786910499853`}, {
+         1.6892302408990794`, -2.080888909849729}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{1.9062154175771215`, -2.4818786910499853`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         1.9062154175771215`, -2.4818786910499853`}, {
+         2.085381734449836, -2.491185339644598}, {
+         2.2240486721196446`, -2.6050214640447185`}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         1.9062154175771215`, -2.4818786910499853`}, {
+         2.044882355246931, -2.5957148153701493`}, {
+         2.2240486721196446`, -2.6050214640447185`}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0994732021826816`, -1.2611438236056711`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0875632595796105`, -1.298640098015138}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0756157557193662`, -1.3362546271651707`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0636392212111716`, -1.3739605539991429`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.051642899747239, -1.4117287764378041`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{0.46683220659972946`, -1.2675887137368678`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0276301997079311`, -1.487328367463935}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0156338782439636`, -1.52509658990892}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         1.0036573437357728`, -1.5628025167410893`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         0.9917098398755073, -1.6004170458931457`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         0.46683220659972946`, -1.2675887137368678`}, {
+         0.9797998972724412, -1.637913320302047}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.2186535353557688`, -2.127135417520712}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.2714479875179736`, -2.146623459620227}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.3244571731520351`, -2.16619076638489}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.3775998602957022`, -2.1858073526361195`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.430787871351964, -2.205440669313661}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.483930558495602, -2.225057255555011}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.5369397441296608`, -2.244624562320331}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{1.1959468387922358`, -2.759779591767362}, {
+         1.5897341962918643`, -2.264112604415061}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{2.2545182885307935`, -0.6023421063632144}, {
+         2.1027098923257737`, -1.2224889549596298`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{2.2545182885307935`, -0.6023421063632144}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{2.2545182885307935`, -0.6023421063632144}, {
+         1.7642492890604238`, -1.0113215815735928`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{1.1965967948458762`, -0.870447158369966}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{0.8920649722740325, -1.9440022310026055`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{
+          2.2240486721196446`, -2.6050214640447185`}, {
+          2.2778483636838023`, -2.3117722378439076`}, {
+          2.4146876822453236`, -2.2337272240331982`}, {
+          2.52068306273151, -2.240855860518802}, {
+          2.679539301118637, -2.4904054294807447`}, {
+          2.6411342040265344`, -2.5894553495205983`}, {
+          2.5125060786054125`, -2.680399445732192}, {
+          2.2240486721196446`, -2.6050214640447185`}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{
+          2.2240486721196446`, -2.6050214640447185`}, {
+          2.3528913777591267`, -2.8738877369077733`}, {
+          2.288059751677066, -3.017459612791079}, {
+          2.198117580143311, -3.0739949461884137`}, {
+          1.9229186272738739`, -2.96547845811787}, {
+          1.89576892125183, -2.86277143983055}, {
+          1.9463756621358672`, -2.7135904053047386`}, {
+          2.2240486721196446`, -2.6050214640447185`}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        ArrowBox[BezierCurveBox[{{
+         2.2240486721196446`, -2.6050214640447185`}, {
+         1.7581529941748464`, -2.218818187311822}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{
+         2.2240486721196446`, -2.6050214640447185`}, {
+         1.8219831235717312`, -2.178718673130443}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{1.9668322065997295`, -4.538685877244177}, {
+         0.9668322065997293, -4.538685877244177}}, 0.03746249901305451], 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{0.9668322065997293, -4.538685877244177}, {
+          0.8783529511319688, -4.729469409629479}, {
+          0.6794744735943781, -4.785865652090073}, {
+          0.5523038491199209, -4.7269085733152}, {
+          0.5523038491199208, -4.350463181173154}, {
+          0.6794744735943781, -4.291506102398281}, {
+          0.8783529511319688, -4.347902344858875}, {
+          0.9668322065997293, -4.538685877244177}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        ArrowBox[BezierCurveBox[{{0.7645579661771947, -0.7377434199177468}, {
+         1.3354642379784831`, -1.045179423057745}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{0.7645579661771947, -0.7377434199177468}, {
+         1.0415346210541014`, -1.3240324270314834`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{2.7626532095859817`, -1.864935353115357}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{2.3979857522414334`, -1.441480534272719}, {
+         2.036455074105581, -1.6656500658475015`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{2.3979857522414334`, -1.441480534272719}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[BezierCurveBox[{{2.3979857522414334`, -1.441480534272719}, {
+         1.9739715709912438`, -1.4072988985997599`}, {
+         1.6124408928553973`, -1.631468430170436}}], 0.03746249901305451], 
+        ArrowBox[{{1.9128517505270612`, -0.9158465303302052}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{2.611424703239552, -2.276852097519071}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{1.3282820086041918`, -0.4783064071633536}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{0.8854743894233228, -1.1944694689280841`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{0.8635638934872096, -2.515657633383939}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{2.5491032028974594`, -0.9654577345988016}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{1.7856725081769285`, -0.46683220659972946`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{0.474038319838588, -1.6864298483087108`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{1.7029451231785437`, -2.766367888869362}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451], 
+        ArrowBox[{{1.7029451231785437`, -2.766367888869362}, {
+         1.9062154175771215`, -2.4818786910499853`}}, 0.03746249901305451], 
+        ArrowBox[{{1.7029451231785437`, -2.766367888869362}, {
+         1.5340045196933105`, -2.4271936858271497`}}, 0.03746249901305451], 
+        {Arrowheads[0.], 
+         ArrowBox[BezierCurveBox[{{
+          1.5340045196933105`, -2.4271936858271497`}, {
+          1.4718198706956627`, -2.6408083263913205`}, {
+          1.2871879969887425`, -2.7220108466752806`}, {
+          1.1558214717267412`, -2.6843501533558403`}, {
+          1.0890624541225775`, -2.321465615539413}, {
+          1.1984250214262002`, -2.239518555473334}, {
+          1.399867820519925, -2.2496958233916}, {
+          1.5340045196933105`, -2.4271936858271497`}},
+          SplineDegree->7], 0.03746249901305451]}, 
+        ArrowBox[{{2.226409371649061, -1.9854686250405176`}, {
+         1.6124408928553973`, -1.631468430170436}}, 0.03746249901305451]}, 
+       {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+        0.7]}], {
+         DiskBox[{2.797798254750414, -1.3264111592574797}, 
+          0.03746249901305451], 
+         InsetBox["\<\"customerupdate@email.roots.com\"\>", 
+          Offset[{2, 2}, {2.8352607537634684, -1.2889486602444251}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.6124408928553973, -1.631468430170436}, 
+          0.03746249901305451], 
+         InsetBox["\<\"23wheels@gmail.com\"\>", 
+          Offset[{2, 2}, {1.6499033918684518, -1.5940059311573815}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.5126861607747801, -2.1726275394870673}, 
+          0.03746249901305451], 
+         InsetBox["\<\"email@driveincontrol.org\"\>", 
+          Offset[{2, 2}, {0.5501486597878347, -2.135165040474013}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.9062154175771215, -2.4818786910499853}, 
+          0.03746249901305451], 
+         InsetBox["\<\"colleen.wheeler@gmail.com\"\>", 
+          Offset[{2, 2}, {1.943677916590176, -2.4444161920369307}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.46683220659972946, -1.2675887137368678}, 
+          0.03746249901305451], 
+         InsetBox["\<\"no-reply@strava.com\"\>", 
+          Offset[{2, 2}, {0.504294705612784, -1.2301262147238132}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.1959468387922358, -2.759779591767362}, 
+          0.03746249901305451], 
+         InsetBox["\<\"notification+kr4kaqnswmgx@facebookmail.com\"\>", 
+          Offset[{2, 2}, {1.2334093378052904, -2.7223170927543077}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.2545182885307935, -0.6023421063632144}, 
+          0.03746249901305451], 
+         InsetBox["\<\"nytimes@email.newyorktimes.com\"\>", 
+          Offset[{2, 2}, {2.291980787543848, -0.5648796073501599}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.1965967948458762, -0.870447158369966}, 
+          0.03746249901305451], 
+         InsetBox["\<\"harvardx-news@harvard.edu\"\>", 
+          Offset[{2, 2}, {1.2340592938589308, -0.8329846593569115}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.8920649722740325, -1.9440022310026055}, 
+          0.03746249901305451], 
+         InsetBox["\<\"dkiel@crescentridge.com\"\>", 
+          Offset[{2, 2}, {0.929527471287087, -1.906539731989551}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.2240486721196446, -2.6050214640447185}, 
+          0.03746249901305451], 
+         InsetBox["\<\"axwheele@hamilton.edu\"\>", 
+          Offset[{2, 2}, {2.261511171132699, -2.567558965031664}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.9668322065997295, -4.538685877244177}, 
+          0.03746249901305451], 
+         InsetBox["\<\"info@e.hyatt.com\"\>", 
+          Offset[{2, 2}, {2.004294705612784, -4.501223378231122}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.9668322065997293, -4.538685877244177}, 
+          0.03746249901305451], 
+         InsetBox["\<\"23WHEELS@GMAIL.COM\"\>", 
+          Offset[{2, 2}, {1.0042947056127838, -4.501223378231122}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.7645579661771947, -0.7377434199177468}, 
+          0.03746249901305451], 
+         InsetBox["\<\"info@meetup.com\"\>", 
+          Offset[{2, 2}, {0.8020204651902493, -0.7002809209046923}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.7626532095859817, -1.864935353115357}, 
+          0.03746249901305451], 
+         InsetBox["\<\"news@ridemaple.com\"\>", 
+          Offset[{2, 2}, {2.8001157085990362, -1.8274728541023024}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.3979857522414334, -1.441480534272719}, 
+          0.03746249901305451], 
+         InsetBox["\<\"no-reply@accounts.google.com\"\>", 
+          Offset[{2, 2}, {2.435448251254488, -1.4040180352596645}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.9128517505270612, -0.9158465303302052}, 
+          0.03746249901305451], 
+         InsetBox["\<\"hello@spotify.com\"\>", 
+          Offset[{2, 2}, {1.9503142495401158, -0.8783840313171507}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.611424703239552, -2.276852097519071}, 
+          0.03746249901305451], 
+         InsetBox["\<\"noreply@google.com\"\>", 
+          Offset[{2, 2}, {2.6488872022526064, -2.2393895985060164}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.3282820086041918, -0.4783064071633536}, 
+          0.03746249901305451], 
+         InsetBox["\<\"team@datacamp.com\"\>", 
+          Offset[{2, 2}, {1.3657445076172463, -0.44084390815029906}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.8854743894233228, -1.1944694689280841}, 
+          0.03746249901305451], 
+         InsetBox["\<\"donotreply@edfinancial.com\"\>", 
+          Offset[{2, 2}, {0.9229368884363773, -1.1570069699150296}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.8635638934872096, -2.515657633383939}, 
+          0.03746249901305451], 
+         InsetBox["\<\"pandora@pandora.com\"\>", 
+          Offset[{2, 2}, {0.9010263925002642, -2.4781951343708846}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.5491032028974594, -0.9654577345988016}, 
+          0.03746249901305451], 
+         InsetBox["\<\"no-reply@cloudimperiumgames.com\"\>", 
+          Offset[{2, 2}, {2.586565701910514, -0.927995235585747}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.7856725081769285, -0.46683220659972946}, 
+          0.03746249901305451], 
+         InsetBox["\<\"newsletter@news.strava.com\"\>", 
+          Offset[{2, 2}, {1.823135007189983, -0.4293697075866749}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{0.474038319838588, -1.6864298483087108}, 
+          0.03746249901305451], 
+         InsetBox["\<\"nytdirect@nytimes.com\"\>", 
+          Offset[{2, 2}, {0.5115008188516426, -1.6489673492956562}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.7029451231785437, -2.766367888869362}, 
+          0.03746249901305451], 
+         InsetBox["\<\"wheelerk84@gmail.com\"\>", 
+          Offset[{2, 2}, {1.7404076221915983, -2.7289053898563074}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{1.5340045196933105, -2.4271936858271497}, 
+          0.03746249901305451], 
+         InsetBox["\<\"megwhe@gmail.com\"\>", 
+          Offset[{2, 2}, {1.571467018706365, -2.389731186814095}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}, {
+         DiskBox[{2.226409371649061, -1.9854686250405176}, 
+          0.03746249901305451], 
+         InsetBox["\<\"c_wheeler2003@yahoo.com\"\>", 
+          Offset[{2, 2}, {2.2638718706621157, -1.948006126027463}], 
+          ImageScaled[{0, 0}],
+          BaseStyle->"Graphics"]}}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FormatType->TraditionalForm,
+  FrameTicks->None,
+  ImageSize->{655., Automatic}]], "Output",
+ CellChangeTimes->{
+  3.740266906779416*^9, {3.740268603688904*^9, 3.740268631872218*^9}, 
+   3.7402686960353765`*^9},
+ CellLabel->
+  "Out[177]=",ExpressionUUID->"60f96d16-0cc3-4842-a4ba-e3a76372e45c"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"program", "[", "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"serverType", "=", 
+     RowBox[{"Input", "[", 
+      RowBox[{"\"\<email server\>\"", ",", "\"\<gmail.com\>\""}], "]"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"loginName", "=", 
+     RowBox[{"Input", "[", 
+      RowBox[{"\"\<username\>\"", ",", "\"\<23wheels\>\""}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"numberWanted", "=", 
+     RowBox[{"Input", "[", 
+      RowBox[{
+      "\"\<How many previous emails do you want to pull?\>\"", ",", "15"}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"start", "[", 
+     RowBox[{"serverType", ",", "loginName"}], "]"}]}], "\[IndentingNewLine]",
+    ")"}]}]], "Input",
+ CellChangeTimes->{{3.740261187355981*^9, 3.74026122003843*^9}, {
+   3.740261909607166*^9, 3.7402619728559065`*^9}, 3.740266214199958*^9, {
+   3.7402688825557714`*^9, 
+   3.740268919541545*^9}},ExpressionUUID->"7097699b-338b-48a1-8646-\
+d38970dfde7a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"start", "[", 
+   RowBox[{"server_String", ",", "username_String", ",", 
+    RowBox[{"numberofEmails_Integer", "?", "Positive"}]}], "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{
+     "mail", ",", "inbox", ",", "sent", ",", "emailStore", ",", "noList", ",",
+       "edges"}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"connectInbox", "[", 
+     RowBox[{"server", ",", "username"}], "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"vars", " ", 
+      RowBox[{"{", 
+       RowBox[{"mail", ",", "inbox", ",", "sent"}], "}"}], " ", "all", " ", 
+      "assigned"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"emailsFromInbox", "=", 
+     RowBox[{"inbox", "[", 
+      RowBox[{
+       RowBox[{"-", "numberofEmails"}], ";;"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", ")"}]}]], "Input",
+ CellChangeTimes->{
+  3.740268923931117*^9},ExpressionUUID->"a7205ca4-93b5-44d6-a1c3-\
+56cf05051553"]
+},
+WindowSize->{766, 772},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 7, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[561, 20, 278, 4, 34, "Text",ExpressionUUID->"c52cf2eb-04a9-4a1d-8487-9c736cc1bc1f"],
+Cell[842, 26, 1024, 23, 105, "Input",ExpressionUUID->"7e6d6483-5ecc-4318-9f7e-0dc3332bdcc6"],
+Cell[1869, 51, 815, 19, 67, "Input",ExpressionUUID->"15b221ba-1947-40ed-81fe-d121062c9e21"],
+Cell[2687, 72, 620, 16, 48, "Input",ExpressionUUID->"1d2f3892-709c-4a80-8581-468e380f031d"],
+Cell[3310, 90, 669, 17, 48, "Input",ExpressionUUID->"1b241132-fde8-41f2-829c-65ca1fce7e06"],
+Cell[3982, 109, 251, 5, 28, "Input",ExpressionUUID->"29b03208-e90c-49c5-9726-d295e68d8a24"],
+Cell[4236, 116, 1308, 28, 162, "Input",ExpressionUUID->"f6846491-4788-4798-8ddc-8b4c014b5714"],
+Cell[5547, 146, 1066, 27, 143, "Input",ExpressionUUID->"c0f55825-05ac-449d-959c-08961fba2f37"],
+Cell[6616, 175, 1725, 42, 276, "Input",ExpressionUUID->"799417cc-a7b7-40ca-b47d-f4514c8869bb"],
+Cell[CellGroupData[{
+Cell[8366, 221, 219, 4, 28, "Input",ExpressionUUID->"4078d641-e791-4434-87b1-f514e013bc09"],
+Cell[8588, 227, 23735, 563, 363, "Output",ExpressionUUID->"4a83c03d-596e-471f-a0c1-6f14e9e43a1d"]
+}, Open  ]],
+Cell[32338, 793, 267, 8, 28, "Input",ExpressionUUID->"f0e5bbdc-e935-4df5-839d-169ffc0da3e8"],
+Cell[32608, 803, 2857, 60, 352, "Input",ExpressionUUID->"bd2cefb2-c225-4f44-93fd-1e2558cf625d"],
+Cell[CellGroupData[{
+Cell[35490, 867, 339, 7, 28, "Input",ExpressionUUID->"c4af6cdb-c2bf-481a-9390-091d31f79631"],
+Cell[35832, 876, 51523, 945, 917, "Output",ExpressionUUID->"60f96d16-0cc3-4842-a4ba-e3a76372e45c"]
+}, Open  ]],
+Cell[87370, 1824, 1025, 25, 124, "Input",ExpressionUUID->"7097699b-338b-48a1-8646-d38970dfde7a"],
+Cell[88398, 1851, 1003, 25, 124, "Input",ExpressionUUID->"a7205ca4-93b5-44d6-a1c3-56cf05051553"]
+}
+]
+*)
+
